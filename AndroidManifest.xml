@@ -30,6 +30,10 @@
             android:name="edu.calpoly.csc409.crave.SearchActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="edu.calpoly.csc409.crave.FoodSelectActivity"
+            android:label="@string/title_activity_food_select" >
+        </activity>
     </application>
 
 </manifest>

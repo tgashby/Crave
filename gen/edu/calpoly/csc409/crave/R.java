@@ -31,31 +31,40 @@ public final class R {
         public static final int search_screen=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f080003;
-        public static final int crave_search=0x7f080001;
-        public static final int fragment_root=0x7f080002;
-        public static final int pager=0x7f080000;
-        public static final int search_again=0x7f080004;
+        public static final int action_settings=0x7f080004;
+        public static final int crave_search=0x7f080002;
+        public static final int food_select_list=0x7f080000;
+        public static final int fragment_root=0x7f080003;
+        public static final int pager=0x7f080001;
+        public static final int search_again=0x7f080005;
     }
     public static final class layout {
-        public static final int activity_load=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_search=0x7f030002;
-        public static final int fragment_main_dummy=0x7f030003;
+        public static final int activity_food_select=0x7f030000;
+        public static final int activity_load=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_search=0x7f030003;
+        public static final int fragment_main_dummy=0x7f030004;
+        public static final int view_foodselect=0x7f030005;
+        public static final int view_near_me=0x7f030006;
+        public static final int view_overview=0x7f030007;
+        public static final int view_recipe=0x7f030008;
     }
     public static final class menu {
-        public static final int load=0x7f070000;
-        public static final int main=0x7f070001;
-        public static final int search=0x7f070002;
+        public static final int food_select=0x7f070000;
+        public static final int load=0x7f070001;
+        public static final int main=0x7f070002;
+        public static final int search=0x7f070003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int alternatives_title=0x7f050005;
         public static final int app_name=0x7f050000;
+        public static final int hello_world=0x7f050008;
         public static final int near_me_title=0x7f050004;
         public static final int overview_title=0x7f050002;
         public static final int recipes_title=0x7f050003;
         public static final int search_again=0x7f050006;
+        public static final int title_activity_food_select=0x7f050007;
     }
     public static final class style {
         /** 

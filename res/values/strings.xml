@@ -8,5 +8,7 @@
     <string name="near_me_title">Near Me</string>
     <string name="alternatives_title">Alternatives</string>
     <string name="search_again">Search Again</string>
+    <string name="title_activity_food_select">FoodSelectActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
