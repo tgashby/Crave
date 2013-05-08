@@ -1,5 +1,6 @@
 package edu.calpoly.csc409.crave;
 
+import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +14,9 @@ public class LoadActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load);
+		
+		// I'M IMPORTANT, DON'T FORGET ABOUT ME
+		USDADatabaseManager.initialize(this);
 		
 		View rootView = findViewById(android.R.id.content);
 		

@@ -1,5 +1,6 @@
 package edu.calpoly.csc409.crave;
 
+import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import edu.calpoly.csc409.crave.fragments.AlternativesFragment;
 import edu.calpoly.csc409.crave.fragments.NearMeFragment;
 import edu.calpoly.csc409.crave.fragments.OverviewFragment;
@@ -8,12 +9,14 @@ import edu.calpoly.csc409.crave.fragments.RecipeFragment;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -40,6 +43,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	protected static final int ALTERNATIVES_POS = 3;
 	
 	protected static final int TAB_COUNT = 4;
+	
+	protected Cursor mFoodCursor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +83,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
+		
+		String foodStr = this.getIntent().getStringExtra("searchText");
+		mFoodCursor = USDADatabaseManager.searchForFood(foodStr);
+		Log.d("DEBUG", "Cursor loaded");
 	}
 
 	@Override

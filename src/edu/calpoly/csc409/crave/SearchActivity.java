@@ -26,7 +26,7 @@ public class SearchActivity extends Activity {
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				if(event.getAction() == KeyEvent.ACTION_DOWN && (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER))
 				{
-					moveToMainActivity();
+					moveToMainActivity(m_vwCraveSearch.getText().toString());
 				}
 				
 				return false;
@@ -35,8 +35,9 @@ public class SearchActivity extends Activity {
 		});
 	}
 
-	protected void moveToMainActivity() {
+	protected void moveToMainActivity(String foodString) {
 		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra("searchText", foodString);
 		
 		this.startActivity(intent);
 	}
