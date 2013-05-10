@@ -44,11 +44,11 @@ public final class R {
         public static final int activity_load=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_search=0x7f030003;
-        public static final int fragment_main_dummy=0x7f030004;
-        public static final int view_foodselect=0x7f030005;
-        public static final int view_near_me=0x7f030006;
-        public static final int view_overview=0x7f030007;
-        public static final int view_recipe=0x7f030008;
+        public static final int fragment_foodselect=0x7f030004;
+        public static final int fragment_main_dummy=0x7f030005;
+        public static final int fragment_near_me=0x7f030006;
+        public static final int fragment_overview=0x7f030007;
+        public static final int fragment_recipe=0x7f030008;
     }
     public static final class menu {
         public static final int food_select=0x7f070000;
