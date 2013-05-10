@@ -5,5 +5,44 @@
     android:orientation="vertical" >
     
     <!-- Overview, nutrition-labelish view -->
-
+    <TextView android:id="@+id/overview_servingsize" 
+        android:text="@string/servingsize"/>
+	<TextView android:id="@+id/overview_calories" 
+        android:text="@string/calories" />
+	<TextView android:id="@+id/overview_caloriesfromfat" 
+        android:text="@string/caloriesfromfat" />
+	<TextView android:id="@+id/overview_totalfat" 
+        android:text="@string/totalfat" />
+	<TextView android:id="@+id/overview_saturatedfat" 
+        android:text="@string/saturatedfat" />
+	<TextView android:id="@+id/overview_transfat" 
+        android:text="@string/transfat" />
+	<TextView android:id="@+id/overview_cholesterol" 
+        android:text="@string/cholesterol" />
+	<TextView android:id="@+id/overview_sodium" 
+        android:text="@string/sodium" />
+	<TextView android:id="@+id/overview_totalcarbs" 
+        android:text="@string/totalcarbs" />
+	<TextView android:id="@+id/overview_dietaryfiber" 
+        android:text="@string/dietaryfiber" />
+	<TextView android:id="@+id/overview_sugars" 
+        android:text="@string/sugars" />
+	<TextView android:id="@+id/overview_protein" 
+        android:text="@string/protein" />
+	<TextView android:id="@+id/overview_vitaminA" 
+        android:text="@string/vitaminA" />
+	<TextView android:id="@+id/overview_vitaminB" 
+        android:text="@string/vitaminB" />
+	<TextView android:id="@+id/overview_vitaminC" 
+        android:text="@string/vitaminC" />
+	<TextView android:id="@+id/overview_vitaminD" 
+        android:text="@string/vitaminD" />
+	<TextView android:id="@+id/overview_vitaminE" 
+        android:text="@string/vitaminE" />
+	<TextView android:id="@+id/overview_calcium" 
+        android:text="@string/calcium" />
+	<TextView android:id="@+id/overview_iron" 
+        android:text="@string/iron" />
+	
+	
 </LinearLayout>

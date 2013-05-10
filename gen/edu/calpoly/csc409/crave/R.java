@@ -31,13 +31,32 @@ public final class R {
         public static final int search_screen=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f080005;
+        public static final int action_settings=0x7f080018;
         public static final int crave_search=0x7f080002;
         public static final int food_select_list=0x7f080000;
         public static final int fragment_root=0x7f080003;
+        public static final int overview_calcium=0x7f080015;
+        public static final int overview_calories=0x7f080005;
+        public static final int overview_caloriesfromfat=0x7f080006;
+        public static final int overview_cholesterol=0x7f08000a;
+        public static final int overview_dietaryfiber=0x7f08000d;
+        public static final int overview_iron=0x7f080016;
+        public static final int overview_protein=0x7f08000f;
+        public static final int overview_saturatedfat=0x7f080008;
+        public static final int overview_servingsize=0x7f080004;
+        public static final int overview_sodium=0x7f08000b;
+        public static final int overview_sugars=0x7f08000e;
+        public static final int overview_totalcarbs=0x7f08000c;
+        public static final int overview_totalfat=0x7f080007;
+        public static final int overview_transfat=0x7f080009;
+        public static final int overview_vitaminA=0x7f080010;
+        public static final int overview_vitaminB=0x7f080011;
+        public static final int overview_vitaminC=0x7f080012;
+        public static final int overview_vitaminD=0x7f080013;
+        public static final int overview_vitaminE=0x7f080014;
         public static final int pager=0x7f080001;
-        public static final int recipe_webview=0x7f080004;
-        public static final int search_again=0x7f080006;
+        public static final int recipe_webview=0x7f080017;
+        public static final int search_again=0x7f080019;
     }
     public static final class layout {
         public static final int activity_food_select=0x7f030000;
@@ -60,12 +79,33 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int alternatives_title=0x7f050005;
         public static final int app_name=0x7f050000;
+        public static final int calcium=0x7f05001a;
+        public static final int calories=0x7f05000a;
+        public static final int caloriesfromfat=0x7f05000b;
+        public static final int cholesterol=0x7f05000f;
+        public static final int dietaryfiber=0x7f050012;
         public static final int hello_world=0x7f050008;
+        public static final int iron=0x7f05001b;
         public static final int near_me_title=0x7f050004;
         public static final int overview_title=0x7f050002;
+        public static final int protein=0x7f050014;
         public static final int recipes_title=0x7f050003;
+        public static final int saturatedfat=0x7f05000d;
         public static final int search_again=0x7f050006;
+        /**  Overview Nutrition Label Text 
+         */
+        public static final int servingsize=0x7f050009;
+        public static final int sodium=0x7f050010;
+        public static final int sugars=0x7f050013;
         public static final int title_activity_food_select=0x7f050007;
+        public static final int totalcarbs=0x7f050011;
+        public static final int totalfat=0x7f05000c;
+        public static final int transfat=0x7f05000e;
+        public static final int vitaminA=0x7f050015;
+        public static final int vitaminB=0x7f050016;
+        public static final int vitaminC=0x7f050017;
+        public static final int vitaminD=0x7f050018;
+        public static final int vitaminE=0x7f050019;
     }
     public static final class style {
         /** 
