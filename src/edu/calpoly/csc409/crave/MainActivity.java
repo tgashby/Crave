@@ -45,6 +45,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	protected static final int TAB_COUNT = 4;
 	
 	protected Cursor mFoodCursor;
+	protected String mFoodStr;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +85,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					.setTabListener(this));
 		}
 		
-		String foodStr = this.getIntent().getStringExtra("searchText");
-		mFoodCursor = USDADatabaseManager.searchForFood(foodStr);
-		Log.d("DEBUG", "Cursor loaded");
+		mFoodStr = this.getIntent().getStringExtra("searchText");
+//		mFoodCursor = USDADatabaseManager.searchForFood(foodStr);
+//		Log.d("DEBUG", "Cursor loaded");
 	}
 
 	@Override
@@ -144,17 +145,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		@Override
 		public Fragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
+			Fragment frag = null;
+			
 			switch (position) {
 			case OVERVIEW_POS:
-				return new OverviewFragment();
+				frag = new OverviewFragment();
+				break;
 			case RECIPE_POS:
-				return new RecipeFragment();
+				frag = new RecipeFragment();
+				break;
 			case NEAR_ME_POS:
-				return new NearMeFragment();
+				frag = new NearMeFragment();
+				break;
 			case ALTERNATIVES_POS:
-				return new AlternativesFragment();
+				frag = new AlternativesFragment();
+				break;
 			}
-			return null;
+			
+			Bundle args = new Bundle();
+			args.putString("search_text", mFoodStr);
+			frag.setArguments(args);
+			
+			return frag;
 		}
 
 		@Override
