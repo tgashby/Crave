@@ -1,5 +1,6 @@
-package edu.calpoly.csc409.crave;
+package edu.calpoly.csc409.crave.activities;
 
+import edu.calpoly.csc409.crave.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

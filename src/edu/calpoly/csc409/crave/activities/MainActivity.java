@@ -1,5 +1,6 @@
-package edu.calpoly.csc409.crave;
+package edu.calpoly.csc409.crave.activities;
 
+import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import edu.calpoly.csc409.crave.fragments.AlternativesFragment;
 import edu.calpoly.csc409.crave.fragments.NearMeFragment;
