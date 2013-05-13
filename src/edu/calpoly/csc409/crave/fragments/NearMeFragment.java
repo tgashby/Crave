@@ -2,6 +2,7 @@ package edu.calpoly.csc409.crave.fragments;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 
 import edu.calpoly.csc409.crave.R;
 import android.annotation.SuppressLint;
@@ -22,7 +23,15 @@ public class NearMeFragment extends Fragment {
 				container, false);
 		
 		mMap = ((SupportMapFragment)this.getFragmentManager().findFragmentById(R.id.near_me_map)).getMap();
-		mMap.getUiSettings().setZoomControlsEnabled(false);
+		
+		if (this.mMap != null) {
+			this.mMap.setMyLocationEnabled(true);
+			
+			UiSettings uiSettings = this.mMap.getUiSettings();
+			uiSettings.setZoomControlsEnabled(false);
+			uiSettings.setMyLocationButtonEnabled(true);
+			uiSettings.setCompassEnabled(true);
+		}
 				
 		return rootView;
 	}
