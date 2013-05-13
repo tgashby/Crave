@@ -32,16 +32,9 @@ public class RecipeFragment extends Fragment {
 			e.printStackTrace();
 		}
 		
-//		WebSettings webSettings = webView.getSettings();
-//		webSettings.setJavaScriptEnabled(true);
+		WebSettings webSettings = webView.getSettings();
+		webSettings.setJavaScriptEnabled(true);
 		webView.setWebViewClient(new WebViewClient());
-		
-//		int sdk = android.os.Build.VERSION.SDK_INT;
-//		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-//		   rootView.setBackgroundResource(R.drawable.recipe_sceen);
-//		} else {
-//		    rootView.setBackground(getResources().getDrawable(R.drawable.recipe_sceen));
-//		}
 		
 		return rootView;
 	}

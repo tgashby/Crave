@@ -1,5 +1,8 @@
 package edu.calpoly.csc409.crave.fragments;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+
 import edu.calpoly.csc409.crave.R;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,20 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class NearMeFragment extends Fragment {
+	GoogleMap mMap;
+	
 	@SuppressLint("NewApi")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_main_dummy,
+		View rootView = inflater.inflate(R.layout.fragment_near_me,
 				container, false);
 		
-		int sdk = android.os.Build.VERSION.SDK_INT;
-		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-		   rootView.setBackgroundResource(R.drawable.nearby_screen);
-		} else {
-		    rootView.setBackground(getResources().getDrawable(R.drawable.nearby_screen));
-		}
-		
+		mMap = ((SupportMapFragment)this.getFragmentManager().findFragmentById(R.id.near_me_map)).getMap();
+		mMap.getUiSettings().setZoomControlsEnabled(false);
+				
 		return rootView;
 	}
 }
