@@ -1,0 +1,4 @@
+google-play-services_lib (Found in Android SDK folder/extras/google/google_play_services/libproject/)
+
+android-sqlite-asset-helper (Should be in lib folder, if it isn't: https://github.com/jgilfelt/android-sqlite-asset-helper)
+

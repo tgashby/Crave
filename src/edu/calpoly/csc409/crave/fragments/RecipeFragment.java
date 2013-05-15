@@ -32,8 +32,10 @@ public class RecipeFragment extends Fragment {
 			e.printStackTrace();
 		}
 		
-		WebSettings webSettings = webView.getSettings();
-		webSettings.setJavaScriptEnabled(true);
+		// Supposedly this is dangerous... Not sure if we want it or not.
+//		WebSettings webSettings = webView.getSettings();
+//		webSettings.setJavaScriptEnabled(true);
+		
 		webView.setWebViewClient(new WebViewClient());
 		
 		return rootView;
