@@ -164,4 +164,4 @@ pip-log.txt
 .DS_Store
 
 project.properties
-*R.java
+gen/edu/calpoly/csc409/crave/R.java
