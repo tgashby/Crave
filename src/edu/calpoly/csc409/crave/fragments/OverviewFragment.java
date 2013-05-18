@@ -43,43 +43,43 @@ public class OverviewFragment extends Fragment {
 		
 		m_nutFacts.setAlcohol(0);
 		m_nutFacts.setCaffeine(1);
-		m_nutFacts.setCalcium(2);
-		m_nutFacts.setCalories(100);
-		m_nutFacts.setCarbs(3);
+		m_nutFacts.setCalcium(2); // I'm important
+		m_nutFacts.setCalories(100); // I'm important
+		m_nutFacts.setCarbs(3); // I'm important
 		m_nutFacts.setCaroteneA(4);
 		m_nutFacts.setCaroteneB(5);
-		m_nutFacts.setCholesterol(6);
+		m_nutFacts.setCholesterol(6); // I'm important
 		m_nutFacts.setCholine(7);
 		m_nutFacts.setCopper(8);
 		m_nutFacts.setCryptoxanthin(9);
-		m_nutFacts.setFiber(10);
+		m_nutFacts.setFiber(10); // I'm important
 		m_nutFacts.setFolateDFE(11);
 		m_nutFacts.setFolateFood(12);
 		m_nutFacts.setFolicAcid(13);
-		m_nutFacts.setIron(14);
+		m_nutFacts.setIron(14); // I'm important
 		m_nutFacts.setLutein(15);
 		m_nutFacts.setLycopene(16);
 		m_nutFacts.setMagnesium(17);
 		m_nutFacts.setNiacin(18);
 		m_nutFacts.setPhosphorus(19);
 		m_nutFacts.setPotassium(20);
-		m_nutFacts.setProtein(21);
+		m_nutFacts.setProtein(21); // I'm important
 		m_nutFacts.setRetinol(22);
 		m_nutFacts.setRiboflavin(23);
-		m_nutFacts.setSatFat(24);
+		m_nutFacts.setSatFat(24); // I'm important
 		m_nutFacts.setSelenium(25);
-		m_nutFacts.setSodium(26);
-		m_nutFacts.setSugar(27);
+		m_nutFacts.setSodium(26); // I'm important
+		m_nutFacts.setSugar(27); // I'm important
 		m_nutFacts.setTheobromine(28);
 		m_nutFacts.setThiamin(29);
-		m_nutFacts.setTotalFat(30);
-		m_nutFacts.setVitA(31);
-		m_nutFacts.setVitB12(32);
+		m_nutFacts.setTotalFat(30); // I'm important
+		m_nutFacts.setVitA(31); // I'm important
+		m_nutFacts.setVitB12(32); // I'm important
 		m_nutFacts.setVitB6(33);
 		m_nutFacts.setVitBAdded(34);
-		m_nutFacts.setVitC(35);
-		m_nutFacts.setVitD(36);
-		m_nutFacts.setVitE(37);
+		m_nutFacts.setVitC(35); // I'm important
+		m_nutFacts.setVitD(36); // I'm important
+		m_nutFacts.setVitE(37); // I'm important
 		m_nutFacts.setVitEAdded(38);
 		m_nutFacts.setVitK(39);
 		m_nutFacts.setWater(40);
