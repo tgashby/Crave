@@ -3,46 +3,121 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <!-- Overview, nutrition-labelish view -->
-    <TextView android:id="@+id/overview_servingsize" 
-        android:text="@string/servingsize"/>
-	<TextView android:id="@+id/overview_calories" 
+
+    <TextView
+        android:id="@+id/overview_servingsize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/servingsize" />
+
+    <TextView
+        android:id="@+id/overview_calories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/calories" />
-	<TextView android:id="@+id/overview_caloriesfromfat" 
+
+    <TextView
+        android:id="@+id/overview_caloriesfromfat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/caloriesfromfat" />
-	<TextView android:id="@+id/overview_totalfat" 
+
+    <TextView
+        android:id="@+id/overview_totalfat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/totalfat" />
-	<TextView android:id="@+id/overview_saturatedfat" 
+
+    <TextView
+        android:id="@+id/overview_saturatedfat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/saturatedfat" />
-	<TextView android:id="@+id/overview_transfat" 
+
+    <TextView
+        android:id="@+id/overview_transfat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/transfat" />
-	<TextView android:id="@+id/overview_cholesterol" 
+
+    <TextView
+        android:id="@+id/overview_cholesterol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/cholesterol" />
-	<TextView android:id="@+id/overview_sodium" 
+
+    <TextView
+        android:id="@+id/overview_sodium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/sodium" />
-	<TextView android:id="@+id/overview_totalcarbs" 
+
+    <TextView
+        android:id="@+id/overview_totalcarbs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/totalcarbs" />
-	<TextView android:id="@+id/overview_dietaryfiber" 
+
+    <TextView
+        android:id="@+id/overview_dietaryfiber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/dietaryfiber" />
-	<TextView android:id="@+id/overview_sugars" 
+
+    <TextView
+        android:id="@+id/overview_sugars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/sugars" />
-	<TextView android:id="@+id/overview_protein" 
+
+    <TextView
+        android:id="@+id/overview_protein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/protein" />
-	<TextView android:id="@+id/overview_vitaminA" 
+
+    <TextView
+        android:id="@+id/overview_vitaminA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/vitaminA" />
-	<TextView android:id="@+id/overview_vitaminB" 
+
+    <TextView
+        android:id="@+id/overview_vitaminB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/vitaminB" />
-	<TextView android:id="@+id/overview_vitaminC" 
+
+    <TextView
+        android:id="@+id/overview_vitaminC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/vitaminC" />
-	<TextView android:id="@+id/overview_vitaminD" 
+
+    <TextView
+        android:id="@+id/overview_vitaminD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/vitaminD" />
-	<TextView android:id="@+id/overview_vitaminE" 
+
+    <TextView
+        android:id="@+id/overview_vitaminE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/vitaminE" />
-	<TextView android:id="@+id/overview_calcium" 
+
+    <TextView
+        android:id="@+id/overview_calcium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/calcium" />
-	<TextView android:id="@+id/overview_iron" 
+
+    <TextView
+        android:id="@+id/overview_iron"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/iron" />
-	
-	
+
 </LinearLayout>
