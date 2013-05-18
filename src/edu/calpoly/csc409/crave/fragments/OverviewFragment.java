@@ -22,15 +22,15 @@ public class OverviewFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_overview,
 				container, false);
 		
-		int sdk = android.os.Build.VERSION.SDK_INT;
-		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-		   rootView.setBackgroundResource(R.drawable.overview_screen);
-		} else {
-		    rootView.setBackground(getResources().getDrawable(R.drawable.overview_screen));
-		}
+//		int sdk = android.os.Build.VERSION.SDK_INT;
+//		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+//		   rootView.setBackgroundResource(R.drawable.overview_screen);
+//		} else {
+//		    rootView.setBackground(getResources().getDrawable(R.drawable.overview_screen));
+//		}
 		
 		initializeNutFacts();
-		initLayout();
+		initLayout(rootView);
 		
 		return rootView;
 	}
@@ -91,69 +91,68 @@ public class OverviewFragment extends Fragment {
 	 * You shouldn't have to touch this... At least not for Vert Prototype
 	 * Several things missing, don't care for Vert Prototype
 	 */
-	private void initLayout() {
-		FragmentActivity activity = this.getActivity();
+	private void initLayout(View rootView) {
 		TextView currView;
 		
-		currView = ((TextView)activity.findViewById(R.id.overview_calcium));
+		currView = ((TextView)rootView.findViewById(R.id.overview_calcium));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getCalciumString());
 		
-		currView = ((TextView)activity.findViewById(R.id.overview_calories));
+		currView = ((TextView)rootView.findViewById(R.id.overview_calories));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getCaloriesString());
 		
 		// TODO
-		currView = ((TextView)activity.findViewById(R.id.overview_caloriesfromfat));
+		currView = ((TextView)rootView.findViewById(R.id.overview_caloriesfromfat));
 		currView.setText(currView.getText() + ": " + "CAL_FROM_FAT_COMP");
 
-		currView = ((TextView)activity.findViewById(R.id.overview_cholesterol));
+		currView = ((TextView)rootView.findViewById(R.id.overview_cholesterol));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getCholesterolString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_dietaryfiber));
+		currView = ((TextView)rootView.findViewById(R.id.overview_dietaryfiber));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getFiberString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_iron));
+		currView = ((TextView)rootView.findViewById(R.id.overview_iron));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getIronString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_protein));
+		currView = ((TextView)rootView.findViewById(R.id.overview_protein));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getProteinString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_saturatedfat));
+		currView = ((TextView)rootView.findViewById(R.id.overview_saturatedfat));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getSatFatString());
 
 		// TODO
-		currView = ((TextView)activity.findViewById(R.id.overview_servingsize));
+		currView = ((TextView)rootView.findViewById(R.id.overview_servingsize));
 		currView.setText(currView.getText() + ": " + "SERV_SIZE");
 
-		currView = ((TextView)activity.findViewById(R.id.overview_sodium));
+		currView = ((TextView)rootView.findViewById(R.id.overview_sodium));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getSodiumString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_sugars));
+		currView = ((TextView)rootView.findViewById(R.id.overview_sugars));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getSugarString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_totalcarbs));
+		currView = ((TextView)rootView.findViewById(R.id.overview_totalcarbs));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getCarbsString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_totalfat));
+		currView = ((TextView)rootView.findViewById(R.id.overview_totalfat));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getTotalFatString());
 
 		// TODO
-		currView = ((TextView)activity.findViewById(R.id.overview_transfat));
+		currView = ((TextView)rootView.findViewById(R.id.overview_transfat));
 		currView.setText(currView.getText() + ": " + "TRANS_FAT");
 
-		currView = ((TextView)activity.findViewById(R.id.overview_vitaminA));
+		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminA));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getVitAString());
 
 		// TODO
-		currView = ((TextView)activity.findViewById(R.id.overview_vitaminB));
+		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminB));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getVitB12String());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_vitaminC));
+		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminC));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getVitCString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_vitaminD));
+		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminD));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getVitDString());
 
-		currView = ((TextView)activity.findViewById(R.id.overview_vitaminE));
+		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminE));
 		currView.setText(currView.getText() + ": " + m_nutFacts.getVitEString());
 		
 	}
