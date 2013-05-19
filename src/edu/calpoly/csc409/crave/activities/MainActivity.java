@@ -55,6 +55,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		mFoodStr = this.getIntent().getStringExtra(SearchActivity.SEARCH_STRING_KEY);
+		
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
@@ -75,7 +77,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					.setTabListener(this));
 		}
 		
-		mFoodStr = this.getIntent().getStringExtra(SearchActivity.SEARCH_STRING_KEY);
 //		mFoodCursor = USDADatabaseManager.searchForFood(foodStr);
 //		Log.d("DEBUG", "Cursor loaded");
 	}

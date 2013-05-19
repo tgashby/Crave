@@ -1,11 +1,15 @@
 package edu.calpoly.csc409.crave.fragments;
 
 import edu.calpoly.csc409.crave.R;
+import edu.calpoly.csc409.crave.activities.MainActivity;
+import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import edu.calpoly.csc409.crave.pojos.NutritionFacts;
 import android.annotation.SuppressLint;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 
 public class OverviewFragment extends Fragment {
 	NutritionFacts m_nutFacts;
+	protected String mFoodStr;
 	
 	
 	@SuppressLint("NewApi")
@@ -21,6 +26,8 @@ public class OverviewFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_overview,
 				container, false);
+		
+		mFoodStr = this.getArguments().getString(MainActivity.FOOD_STRING_KEY);
 		
 		initializeNutFacts();
 		initLayout(rootView);
@@ -34,7 +41,77 @@ public class OverviewFragment extends Fragment {
 	private void initializeNutFacts() {
 		m_nutFacts = new NutritionFacts();
 		
-		// These actually get displayed in the current layout
+		Cursor foodCursor = USDADatabaseManager.getNDBNO(mFoodStr);
+		Log.d("~~Database Query getNDBNO~~", foodCursor.getString(foodCursor.getColumnIndex("NDB_No")));
+		
+		//Currently just uses the first entry
+		String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
+		
+		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
+		int val;
+		for (int i = 0; i < nutrCursor.getCount(); i++) {
+			val = (int) nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
+			
+			switch (nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")))
+			{
+			case 301:
+				m_nutFacts.setCalcium(val); // I'm important
+				break;
+			case 208:
+				/*// Kilocalories, special treatment
+				double temp = nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
+				temp = temp * 1000;*/
+				m_nutFacts.setCalories(val); // I'm important
+				break;
+			case 205:
+				m_nutFacts.setCarbs(val); // I'm important
+				break;
+			case 601:
+				m_nutFacts.setCholesterol(val); // I'm important
+				break;
+			case 291:
+				m_nutFacts.setFiber(val); // I'm important
+				break;
+			case 303:
+				m_nutFacts.setIron(val); // I'm important
+				break;
+			case 203:
+				m_nutFacts.setProtein(val); // I'm important
+				break;
+			case 606:
+				m_nutFacts.setSatFat(val); // I'm important
+				break;
+			case 307:
+				m_nutFacts.setSodium(val); // I'm important
+				break;
+			case 269:
+				m_nutFacts.setSugar(val); // I'm important
+				break;
+			case 204:
+				m_nutFacts.setTotalFat(val); // I'm important
+				break;
+			case 318:
+				m_nutFacts.setVitA(val); // I'm important
+				break;
+			case 418:
+				m_nutFacts.setVitB12(val); // I'm important
+				break;
+			case 401:
+				m_nutFacts.setVitC(val); // I'm important
+				break;
+			case 324:
+				m_nutFacts.setVitD(val); // I'm important
+				break;
+			case 323:
+				m_nutFacts.setVitE(val); // I'm important 
+				break;
+			default:
+			}
+			
+			nutrCursor.moveToNext();
+		}
+		
+		/*// These actually get displayed in the current layout
 		m_nutFacts.setCalcium(2); // I'm important
 		m_nutFacts.setCalories(100); // I'm important
 		m_nutFacts.setCarbs(3); // I'm important
@@ -79,7 +156,7 @@ public class OverviewFragment extends Fragment {
 		m_nutFacts.setVitEAdded(38);
 		m_nutFacts.setVitK(39);
 		m_nutFacts.setWater(40);
-		m_nutFacts.setZinc(41);
+		m_nutFacts.setZinc(41);*/
 	}
 
 	/**
