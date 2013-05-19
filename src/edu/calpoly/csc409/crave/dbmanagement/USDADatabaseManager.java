@@ -38,6 +38,7 @@ public class USDADatabaseManager {
 			return null;
 		}
 		
+		// LOLOLOL I have no idea what I'm doing...
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 		
 		Cursor toRet;
