@@ -1,10 +1,24 @@
 package edu.calpoly.csc409.crave.fragments;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URLEncoder;
 import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.*;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import edu.calpoly.csc409.crave.R;
 import android.annotation.SuppressLint;
@@ -13,6 +27,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -22,7 +37,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 public class NearMeFragment extends Fragment {
-	GoogleMap mMap;
+	private GoogleMap mMap;
+	private static final String PLACES_API_KEY = "AIzaSyD6sNTujHh7moB345pdeqk5XBCO4j32l_s";
 	
 	@SuppressLint("NewApi")
 	@Override
@@ -32,6 +48,7 @@ public class NearMeFragment extends Fragment {
 				container, false);
 		
 		String foodStr = getArguments().getString("search_text");
+		foodStr = foodStr.trim();
 		
 		mMap = ((SupportMapFragment)this.getFragmentManager().findFragmentById(R.id.near_me_map)).getMap();
 		
@@ -44,19 +61,98 @@ public class NearMeFragment extends Fragment {
 			uiSettings.setCompassEnabled(true);
 		}
 		
-		Geocoder geocoder = new Geocoder(this.getActivity());
 		LocationManager locManager = (LocationManager)this.getActivity().getSystemService(Context.LOCATION_SERVICE);
 		
 		try {
 			Location loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-			List<Address> places = geocoder.getFromLocationName(foodStr, 10, loc.getLatitude() - 10, loc.getLongitude() - 10, loc.getLatitude() + 10, loc.getLongitude() + 10);
-			Log.d("NearMeFragment", "" + places.size());
-			Toast.makeText(getActivity(), foodStr + " places found: " + places.size(), Toast.LENGTH_SHORT).show();
+			String placesSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/" +
+				    "json?location="+loc.getLatitude()+","+loc.getLongitude()+
+				    "&keyword=" + URLEncoder.encode(foodStr, "UTF-8") +
+				    "&radius=1000&sensor=true" +
+				    "&types=" + URLEncoder.encode("food|bar|store", "UTF-8") +
+				    "&key=" + PLACES_API_KEY;
+		
+			new GetPlaces().execute(placesSearchStr);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 				
 		return rootView;
+	}
+	
+	private class GetPlaces extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... placesURL) {
+			StringBuilder placesBuilder = new StringBuilder();
+			
+			for (String placeSearchURL : placesURL) {
+				HttpClient placesClient = new DefaultHttpClient();
+				
+				try {
+					HttpGet placesGet = new HttpGet(placeSearchURL);
+					HttpResponse placesResponse = placesClient.execute(placesGet);
+					StatusLine placeSearchStatus = placesResponse.getStatusLine();
+					
+					if (placeSearchStatus.getStatusCode() == 200) {
+						HttpEntity placesEntity = placesResponse.getEntity();
+						InputStream placesContent = placesEntity.getContent();
+						InputStreamReader placesInput = new InputStreamReader(placesContent);
+						BufferedReader placesReader = new BufferedReader(placesInput);
+						
+						String lineIn;
+						while ((lineIn = placesReader.readLine()) != null) {
+						    placesBuilder.append(lineIn);
+						}
+					}
+				}
+				catch(Exception e) {
+				    e.printStackTrace();
+				}
+			}
+			
+			return placesBuilder.toString();
+		}
+		
+		@Override
+		protected void onPostExecute (String result) {
+			try {
+				JSONObject json = new JSONObject(result);
+				JSONArray placesArr = json.getJSONArray("results");
+				JSONObject place;
+				LatLng latLng = null;
+				String placeName = "";
+				boolean hasName = false, hasLoc = false;
+				
+				for (int placeNdx = 0; placeNdx < placesArr.length(); placeNdx++) {
+					place = placesArr.getJSONObject(placeNdx);
+					
+					if (place.has("name")) {
+						placeName = place.getString("name");
+						hasName = true;
+					}
+					
+					if (place.has("geometry")) {
+						JSONObject geometry = place.getJSONObject("geometry");
+						if (geometry.has("location")) {
+							JSONObject location = geometry.getJSONObject("location");
+							
+							latLng = new LatLng(location.getDouble("lat"), location.getDouble("lng"));
+							hasLoc = true;
+						}
+					}
+					
+					if (hasName && hasLoc) {
+						mMap.addMarker(new MarkerOptions()
+						 .position(latLng)
+						 .title(placeName));
+					}
+				}
+			} 
+			catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
