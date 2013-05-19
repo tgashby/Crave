@@ -1,6 +1,7 @@
 package edu.calpoly.csc409.crave.fragments;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLEncoder;
@@ -9,6 +10,7 @@ import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -37,9 +39,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+/**
+ * KNOWN ISSUES:
+ * This relies on GPS being on. If it isn't the app crashes!
+ */
+
 public class NearMeFragment extends Fragment {
 	private GoogleMap mMap;
 	private static final String PLACES_API_KEY = "AIzaSyD6sNTujHh7moB345pdeqk5XBCO4j32l_s";
+	
+	// Web Constants
+	private static final int STATUS_OK = 200;
 	
 	@SuppressLint("NewApi")
 	@Override
@@ -48,10 +58,10 @@ public class NearMeFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_near_me,
 				container, false);
 		
-		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY);
-		foodStr = foodStr.trim();
+		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY).trim();
 		
-		mMap = ((SupportMapFragment)this.getFragmentManager().findFragmentById(R.id.near_me_map)).getMap();
+		mMap = ((SupportMapFragment)this.getFragmentManager()
+									 .findFragmentById(R.id.near_me_map)).getMap();
 		
 		if (this.mMap != null) {
 			this.mMap.setMyLocationEnabled(true);
@@ -62,7 +72,8 @@ public class NearMeFragment extends Fragment {
 			uiSettings.setCompassEnabled(true);
 		}
 		
-		LocationManager locManager = (LocationManager)this.getActivity().getSystemService(Context.LOCATION_SERVICE);
+		LocationManager locManager = (LocationManager)this.getActivity()
+									  .getSystemService(Context.LOCATION_SERVICE);
 		
 		try {
 			Location loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -92,20 +103,14 @@ public class NearMeFragment extends Fragment {
 				HttpClient placesClient = new DefaultHttpClient();
 				
 				try {
-					HttpGet placesGet = new HttpGet(placeSearchURL);
-					HttpResponse placesResponse = placesClient.execute(placesGet);
+					HttpResponse placesResponse = 
+					 executeGetRequest(placesClient, placeSearchURL);
+					
 					StatusLine placeSearchStatus = placesResponse.getStatusLine();
 					
-					if (placeSearchStatus.getStatusCode() == 200) {
-						HttpEntity placesEntity = placesResponse.getEntity();
-						InputStream placesContent = placesEntity.getContent();
-						InputStreamReader placesInput = new InputStreamReader(placesContent);
-						BufferedReader placesReader = new BufferedReader(placesInput);
-						
-						String lineIn;
-						while ((lineIn = placesReader.readLine()) != null) {
-						    placesBuilder.append(lineIn);
-						}
+					if (placeSearchStatus != null &&
+					 placeSearchStatus.getStatusCode() == STATUS_OK) {
+						placesBuilder = getJSONResponse(placesResponse);
 					}
 				}
 				catch(Exception e) {
@@ -116,17 +121,52 @@ public class NearMeFragment extends Fragment {
 			return placesBuilder.toString();
 		}
 		
+		private StringBuilder getJSONResponse(HttpResponse placesResponse) {
+			StringBuilder placesBuilder = new StringBuilder();
+			
+			try {
+				HttpEntity placesEntity = placesResponse.getEntity();
+				InputStream placesContent = placesEntity.getContent();
+				InputStreamReader placesInput = new InputStreamReader(placesContent);
+				BufferedReader placesReader = new BufferedReader(placesInput);
+				
+				String lineIn;
+				while ((lineIn = placesReader.readLine()) != null) {
+				    placesBuilder.append(lineIn);
+				}
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			return placesBuilder;
+		}
+
+		private HttpResponse executeGetRequest(HttpClient placesClient, String placeSearchURL) {
+			HttpGet placesGet = new HttpGet(placeSearchURL);
+			HttpResponse placesResponse = null;
+			
+			try {
+				placesResponse = placesClient.execute(placesGet);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return placesResponse;
+		}
+
 		@Override
 		protected void onPostExecute (String result) {
 			try {
 				JSONObject json = new JSONObject(result);
 				JSONArray placesArr = json.getJSONArray("results");
+				int numResults = placesArr.length();
 				JSONObject place;
 				LatLng latLng = null;
 				String placeName = "";
 				boolean hasName = false, hasLoc = false;
 				
-				for (int placeNdx = 0; placeNdx < placesArr.length(); placeNdx++) {
+				for (int placeNdx = 0; placeNdx < numResults; placeNdx++) {
 					place = placesArr.getJSONObject(placeNdx);
 					
 					if (place.has("name")) {
@@ -134,7 +174,7 @@ public class NearMeFragment extends Fragment {
 						hasName = true;
 					}
 					
-					if (place.has("geometry")) {
+					if (hasName && place.has("geometry")) {
 						JSONObject geometry = place.getJSONObject("geometry");
 						if (geometry.has("location")) {
 							JSONObject location = geometry.getJSONObject("location");
