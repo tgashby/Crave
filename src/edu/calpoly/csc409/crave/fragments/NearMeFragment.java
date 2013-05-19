@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import edu.calpoly.csc409.crave.R;
+import edu.calpoly.csc409.crave.activities.MainActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Address;
@@ -47,7 +48,7 @@ public class NearMeFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_near_me,
 				container, false);
 		
-		String foodStr = getArguments().getString("search_text");
+		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY);
 		foodStr = foodStr.trim();
 		
 		mMap = ((SupportMapFragment)this.getFragmentManager().findFragmentById(R.id.near_me_map)).getMap();

@@ -47,46 +47,35 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	
 	protected Cursor mFoodCursor;
 	protected String mFoodStr;
+	
+	public static final String FOOD_STRING_KEY = "food_string";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		// Set up the action bar.
+		
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
+		
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-		// Set up the ViewPager with the sections adapter.
+		
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-
-		// When swiping between different sections, select the corresponding
-		// tab. We can also use ActionBar.Tab#select() to do this if we have
-		// a reference to the Tab.
 		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 			@Override
 			public void onPageSelected(int position) {
 				actionBar.setSelectedNavigationItem(position);
 			}
 		});
-
-		// For each of the sections in the app, add a tab to the action bar.
-		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			// Create a tab with text corresponding to the page title defined by
-			// the adapter. Also specify this Activity object, which implements
-			// the TabListener interface, as the callback (listener) for when
-			// this tab is selected.
+		
+		for (int i = 0; i < TAB_COUNT; i++) {
 			actionBar.addTab(actionBar.newTab()
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
 		
-		mFoodStr = this.getIntent().getStringExtra("searchText");
+		mFoodStr = this.getIntent().getStringExtra(SearchActivity.SEARCH_STRING_KEY);
 //		mFoodCursor = USDADatabaseManager.searchForFood(foodStr);
 //		Log.d("DEBUG", "Cursor loaded");
 	}
@@ -116,21 +105,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 
 	@Override
-	public void onTabSelected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
+	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
 	@Override
 	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-		
+		// Unused for now
 	}
 
 	@Override
 	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-		
+		// Unused for now
 	}
 
 	/**
@@ -163,8 +149,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				break;
 			}
 			
+			// Add the food item they are search for so each fragment has access
 			Bundle args = new Bundle();
-			args.putString("search_text", mFoodStr);
+			args.putString(FOOD_STRING_KEY, mFoodStr);
 			frag.setArguments(args);
 			
 			return frag;

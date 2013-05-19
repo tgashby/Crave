@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import edu.calpoly.csc409.crave.R;
+import edu.calpoly.csc409.crave.activities.MainActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,7 @@ public class RecipeFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_recipe,
 				container, false);
 		
-		String foodStr = getArguments().getString("search_text");
+		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY);
 		
 		WebView webView = (WebView)rootView.findViewById(R.id.recipe_webview);
 		

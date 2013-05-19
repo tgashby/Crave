@@ -14,6 +14,8 @@ public class SearchActivity extends Activity {
 
 	protected EditText m_vwCraveSearch;
 	
+	public static final String SEARCH_STRING_KEY = "search_string";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class SearchActivity extends Activity {
 
 	protected void moveToMainActivity(String foodString) {
 		Intent intent = new Intent(this, MainActivity.class);
-		intent.putExtra("searchText", foodString);
+		intent.putExtra(SEARCH_STRING_KEY, foodString);
 		
 		this.startActivity(intent);
 	}
