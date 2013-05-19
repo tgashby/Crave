@@ -22,13 +22,6 @@ public class OverviewFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_overview,
 				container, false);
 		
-//		int sdk = android.os.Build.VERSION.SDK_INT;
-//		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-//		   rootView.setBackgroundResource(R.drawable.overview_screen);
-//		} else {
-//		    rootView.setBackground(getResources().getDrawable(R.drawable.overview_screen));
-//		}
-		
 		initializeNutFacts();
 		initLayout(rootView);
 		
@@ -41,45 +34,48 @@ public class OverviewFragment extends Fragment {
 	private void initializeNutFacts() {
 		m_nutFacts = new NutritionFacts();
 		
-		m_nutFacts.setAlcohol(0);
-		m_nutFacts.setCaffeine(1);
+		// These actually get displayed in the current layout
 		m_nutFacts.setCalcium(2); // I'm important
 		m_nutFacts.setCalories(100); // I'm important
 		m_nutFacts.setCarbs(3); // I'm important
+		m_nutFacts.setCholesterol(6); // I'm important
+		m_nutFacts.setFiber(10); // I'm important
+		m_nutFacts.setIron(14); // I'm important
+		m_nutFacts.setProtein(21); // I'm important
+		m_nutFacts.setSatFat(24); // I'm important
+		m_nutFacts.setSodium(26); // I'm important
+		m_nutFacts.setSugar(27); // I'm important
+		m_nutFacts.setTotalFat(30); // I'm important
+		m_nutFacts.setVitA(31); // I'm important
+		m_nutFacts.setVitB12(32); // I'm important
+		m_nutFacts.setVitC(35); // I'm important
+		m_nutFacts.setVitD(36); // I'm important
+		m_nutFacts.setVitE(37); // I'm important
+		
+		// These don't, don't worry about it unless you want to
+		m_nutFacts.setAlcohol(0);
+		m_nutFacts.setCaffeine(1);
 		m_nutFacts.setCaroteneA(4);
 		m_nutFacts.setCaroteneB(5);
-		m_nutFacts.setCholesterol(6); // I'm important
 		m_nutFacts.setCholine(7);
 		m_nutFacts.setCopper(8);
 		m_nutFacts.setCryptoxanthin(9);
-		m_nutFacts.setFiber(10); // I'm important
 		m_nutFacts.setFolateDFE(11);
 		m_nutFacts.setFolateFood(12);
 		m_nutFacts.setFolicAcid(13);
-		m_nutFacts.setIron(14); // I'm important
 		m_nutFacts.setLutein(15);
 		m_nutFacts.setLycopene(16);
 		m_nutFacts.setMagnesium(17);
 		m_nutFacts.setNiacin(18);
 		m_nutFacts.setPhosphorus(19);
 		m_nutFacts.setPotassium(20);
-		m_nutFacts.setProtein(21); // I'm important
 		m_nutFacts.setRetinol(22);
 		m_nutFacts.setRiboflavin(23);
-		m_nutFacts.setSatFat(24); // I'm important
 		m_nutFacts.setSelenium(25);
-		m_nutFacts.setSodium(26); // I'm important
-		m_nutFacts.setSugar(27); // I'm important
 		m_nutFacts.setTheobromine(28);
 		m_nutFacts.setThiamin(29);
-		m_nutFacts.setTotalFat(30); // I'm important
-		m_nutFacts.setVitA(31); // I'm important
-		m_nutFacts.setVitB12(32); // I'm important
 		m_nutFacts.setVitB6(33);
 		m_nutFacts.setVitBAdded(34);
-		m_nutFacts.setVitC(35); // I'm important
-		m_nutFacts.setVitD(36); // I'm important
-		m_nutFacts.setVitE(37); // I'm important
 		m_nutFacts.setVitEAdded(38);
 		m_nutFacts.setVitK(39);
 		m_nutFacts.setWater(40);
