@@ -164,4 +164,7 @@ pip-log.txt
 .DS_Store
 
 project.properties
-gen/edu/calpoly/csc409/crave/R.java
+gen/edu/calpoly/csc409/crave/
+.idea/
+out/
+Crave.iml
