@@ -46,7 +46,11 @@ import android.widget.Toast;
 
 public class NearMeFragment extends Fragment {
 	private GoogleMap mMap;
+	
+	// Places API constants
 	private static final String PLACES_API_KEY = "AIzaSyD6sNTujHh7moB345pdeqk5XBCO4j32l_s";
+	private static final int SEARCH_RADIUS = 2000;
+	private static final String PLACE_TYPES = "food|bar|store";
 	
 	// Web Constants
 	private static final int STATUS_OK = 200;
@@ -80,8 +84,8 @@ public class NearMeFragment extends Fragment {
 			String placesSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/" +
 				    "json?location="+loc.getLatitude()+","+loc.getLongitude()+
 				    "&keyword=" + URLEncoder.encode(foodStr, "UTF-8") +
-				    "&radius=1000&sensor=true" +
-				    "&types=" + URLEncoder.encode("food|bar|store", "UTF-8") +
+				    "&radius=" + SEARCH_RADIUS + "&sensor=true" +
+				    "&types=" + URLEncoder.encode(PLACE_TYPES, "UTF-8") +
 				    "&key=" + PLACES_API_KEY;
 		
 			new GetPlaces().execute(placesSearchStr);
