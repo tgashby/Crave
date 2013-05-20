@@ -1,55 +1,55 @@
 package edu.calpoly.csc409.crave.pojos;
 
 public class NutritionFacts {
-	protected int mProtein;
-	protected int mTotalFat;
-	protected int mCarbs;
-	protected int mCalories;
-	protected int mAlcohol;
-	protected int mWater;
-	protected int mCaffeine;
-	protected int mTheobromine;
-	protected int mSugar;
-	protected int mFiber;
-	protected int mCalcium;
-	protected int mIron;
-	protected int mMagnesium;
-	protected int mPhosphorus;
-	protected int mPotassium;
-	protected int mSodium;
-	protected int mZinc;
-	protected int mCopper;
-	protected int mSelenium;
-	protected int mRetinol;
-	protected int mVitA;
-	protected int mCaroteneB;
-	protected int mCaroteneA;
-	protected int mVitE;
-	protected int mVitD;
-	protected int mCryptoxanthin;
-	protected int mLycopene;
-	protected int mLutein;
-	protected int mVitC;
-	protected int mThiamin;
-	protected int mRiboflavin;
-	protected int mNiacin;
-	protected int mVitB6;
-	protected int mVitB12;
-	protected int mCholine;
-	protected int mVitK;
-	protected int mFolicAcid;
-	protected int mFolateFood;
-	protected int mFolateDFE;
-	protected int mVitEAdded;
-	protected int mVitBAdded;
-	protected int mCholesterol;
-	protected int mSatFat;
+	protected double mProtein;
+	protected double mTotalFat;
+	protected double mCarbs;
+	protected double mCalories;
+	protected double mAlcohol;
+	protected double mWater;
+	protected double mCaffeine;
+	protected double mTheobromine;
+	protected double mSugar;
+	protected double mFiber;
+	protected double mCalcium;
+	protected double mIron;
+	protected double mMagnesium;
+	protected double mPhosphorus;
+	protected double mPotassium;
+	protected double mSodium;
+	protected double mZinc;
+	protected double mCopper;
+	protected double mSelenium;
+	protected double mRetinol;
+	protected double mVitA;
+	protected double mCaroteneB;
+	protected double mCaroteneA;
+	protected double mVitE;
+	protected double mVitD;
+	protected double mCryptoxanthin;
+	protected double mLycopene;
+	protected double mLutein;
+	protected double mVitC;
+	protected double mThiamin;
+	protected double mRiboflavin;
+	protected double mNiacin;
+	protected double mVitB6;
+	protected double mVitB12;
+	protected double mCholine;
+	protected double mVitK;
+	protected double mFolicAcid;
+	protected double mFolateFood;
+	protected double mFolateDFE;
+	protected double mVitEAdded;
+	protected double mVitBAdded;
+	protected double mCholesterol;
+	protected double mSatFat;
 
 	public String getProteinString() {
 		return mProtein + "g";
 	}
 
-	public void setProtein(int mProtein) {
+	public void setProtein(double mProtein) {
 		this.mProtein = mProtein;
 	}
 
@@ -57,7 +57,7 @@ public class NutritionFacts {
 		return mTotalFat + "g";
 	}
 
-	public void setTotalFat(int mTotalFat) {
+	public void setTotalFat(double mTotalFat) {
 		this.mTotalFat = mTotalFat;
 	}
 
@@ -65,7 +65,7 @@ public class NutritionFacts {
 		return mCarbs + "g";
 	}
 
-	public void setCarbs(int mCarbs) {
+	public void setCarbs(double mCarbs) {
 		this.mCarbs = mCarbs;
 	}
 
@@ -73,7 +73,7 @@ public class NutritionFacts {
 		return mCalories + "kcal";
 	}
 
-	public void setCalories(int mCalories) {
+	public void setCalories(double mCalories) {
 		this.mCalories = mCalories;
 	}
 
@@ -81,7 +81,7 @@ public class NutritionFacts {
 		return mAlcohol + "g";
 	}
 
-	public void setAlcohol(int mAlcohol) {
+	public void setAlcohol(double mAlcohol) {
 		this.mAlcohol = mAlcohol;
 	}
 
@@ -89,7 +89,7 @@ public class NutritionFacts {
 		return mWater + "g";
 	}
 
-	public void setWater(int mWater) {
+	public void setWater(double mWater) {
 		this.mWater = mWater;
 	}
 
@@ -97,7 +97,7 @@ public class NutritionFacts {
 		return mCaffeine + "mg";
 	}
 
-	public void setCaffeine(int mCaffeine) {
+	public void setCaffeine(double mCaffeine) {
 		this.mCaffeine = mCaffeine;
 	}
 
@@ -105,7 +105,7 @@ public class NutritionFacts {
 		return mTheobromine + "mg";
 	}
 
-	public void setTheobromine(int mTheobromine) {
+	public void setTheobromine(double mTheobromine) {
 		this.mTheobromine = mTheobromine;
 	}
 
@@ -113,7 +113,7 @@ public class NutritionFacts {
 		return mSugar + "g";
 	}
 
-	public void setSugar(int mSugar) {
+	public void setSugar(double mSugar) {
 		this.mSugar = mSugar;
 	}
 
@@ -121,7 +121,7 @@ public class NutritionFacts {
 		return mFiber + "g";
 	}
 
-	public void setFiber(int mFiber) {
+	public void setFiber(double mFiber) {
 		this.mFiber = mFiber;
 	}
 
@@ -129,7 +129,7 @@ public class NutritionFacts {
 		return mCalcium + "mg";
 	}
 
-	public void setCalcium(int mCalcium) {
+	public void setCalcium(double mCalcium) {
 		this.mCalcium = mCalcium;
 	}
 
@@ -137,7 +137,7 @@ public class NutritionFacts {
 		return mIron + "mg";
 	}
 
-	public void setIron(int mIron) {
+	public void setIron(double mIron) {
 		this.mIron = mIron;
 	}
 
@@ -145,7 +145,7 @@ public class NutritionFacts {
 		return mMagnesium + "mg";
 	}
 
-	public void setMagnesium(int mMagnesium) {
+	public void setMagnesium(double mMagnesium) {
 		this.mMagnesium = mMagnesium;
 	}
 
@@ -153,7 +153,7 @@ public class NutritionFacts {
 		return mPhosphorus + "mg";
 	}
 
-	public void setPhosphorus(int mPhosphorus) {
+	public void setPhosphorus(double mPhosphorus) {
 		this.mPhosphorus = mPhosphorus;
 	}
 
@@ -161,7 +161,7 @@ public class NutritionFacts {
 		return mPotassium + "mg";
 	}
 
-	public void setPotassium(int mPotassium) {
+	public void setPotassium(double mPotassium) {
 		this.mPotassium = mPotassium;
 	}
 
@@ -169,7 +169,7 @@ public class NutritionFacts {
 		return mSodium + "mg";
 	}
 
-	public void setSodium(int mSodium) {
+	public void setSodium(double mSodium) {
 		this.mSodium = mSodium;
 	}
 
@@ -177,7 +177,7 @@ public class NutritionFacts {
 		return mZinc + "mg";
 	}
 
-	public void setZinc(int mZinc) {
+	public void setZinc(double mZinc) {
 		this.mZinc = mZinc;
 	}
 
@@ -185,7 +185,7 @@ public class NutritionFacts {
 		return mCopper + "mg";
 	}
 
-	public void setCopper(int mCopper) {
+	public void setCopper(double mCopper) {
 		this.mCopper = mCopper;
 	}
 
@@ -193,7 +193,7 @@ public class NutritionFacts {
 		return mSelenium + "mcg";
 	}
 
-	public void setSelenium(int mSelenium) {
+	public void setSelenium(double mSelenium) {
 		this.mSelenium = mSelenium;
 	}
 
@@ -201,7 +201,7 @@ public class NutritionFacts {
 		return mRetinol + "mcg";
 	}
 
-	public void setRetinol(int mRetinol) {
+	public void setRetinol(double mRetinol) {
 		this.mRetinol = mRetinol;
 	}
 
@@ -209,7 +209,7 @@ public class NutritionFacts {
 		return mVitA + "mcg";
 	}
 
-	public void setVitA(int mVitA) {
+	public void setVitA(double mVitA) {
 		this.mVitA = mVitA;
 	}
 
@@ -217,7 +217,7 @@ public class NutritionFacts {
 		return mCaroteneB + "mcg";
 	}
 
-	public void setCaroteneB(int mCaroteneB) {
+	public void setCaroteneB(double mCaroteneB) {
 		this.mCaroteneB = mCaroteneB;
 	}
 
@@ -225,7 +225,7 @@ public class NutritionFacts {
 		return mCaroteneA + "mcg";
 	}
 
-	public void setCaroteneA(int mCaroteneA) {
+	public void setCaroteneA(double mCaroteneA) {
 		this.mCaroteneA = mCaroteneA;
 	}
 
@@ -233,7 +233,7 @@ public class NutritionFacts {
 		return mVitE + "mg";
 	}
 
-	public void setVitE(int mVitE) {
+	public void setVitE(double mVitE) {
 		this.mVitE = mVitE;
 	}
 
@@ -241,7 +241,7 @@ public class NutritionFacts {
 		return mVitD + "mcg";
 	}
 
-	public void setVitD(int mVitD) {
+	public void setVitD(double mVitD) {
 		this.mVitD = mVitD;
 	}
 
@@ -249,7 +249,7 @@ public class NutritionFacts {
 		return mCryptoxanthin + "mcg";
 	}
 
-	public void setCryptoxanthin(int mCryptoxanthin) {
+	public void setCryptoxanthin(double mCryptoxanthin) {
 		this.mCryptoxanthin = mCryptoxanthin;
 	}
 
@@ -257,7 +257,7 @@ public class NutritionFacts {
 		return mLycopene + "mcg";
 	}
 
-	public void setLycopene(int mLycopene) {
+	public void setLycopene(double mLycopene) {
 		this.mLycopene = mLycopene;
 	}
 
@@ -265,7 +265,7 @@ public class NutritionFacts {
 		return mLutein + "mcg";
 	}
 
-	public void setLutein(int mLutein) {
+	public void setLutein(double mLutein) {
 		this.mLutein = mLutein;
 	}
 
@@ -273,7 +273,7 @@ public class NutritionFacts {
 		return mVitC + "mg";
 	}
 
-	public void setVitC(int mVitC) {
+	public void setVitC(double mVitC) {
 		this.mVitC = mVitC;
 	}
 
@@ -281,7 +281,7 @@ public class NutritionFacts {
 		return mThiamin + "mg";
 	}
 
-	public void setThiamin(int mThiamin) {
+	public void setThiamin(double mThiamin) {
 		this.mThiamin = mThiamin;
 	}
 
@@ -289,7 +289,7 @@ public class NutritionFacts {
 		return mRiboflavin + "mg";
 	}
 
-	public void setRiboflavin(int mRiboflavin) {
+	public void setRiboflavin(double mRiboflavin) {
 		this.mRiboflavin = mRiboflavin;
 	}
 
@@ -297,7 +297,7 @@ public class NutritionFacts {
 		return mNiacin + "mg";
 	}
 
-	public void setNiacin(int mNiacin) {
+	public void setNiacin(double mNiacin) {
 		this.mNiacin = mNiacin;
 	}
 
@@ -305,7 +305,7 @@ public class NutritionFacts {
 		return mVitB6 + "mg";
 	}
 
-	public void setVitB6(int mVitB) {
+	public void setVitB6(double mVitB) {
 		this.mVitB6 = mVitB;
 	}
 	
@@ -313,7 +313,7 @@ public class NutritionFacts {
 		return mVitB12 + "mcg";
 	}
 
-	public void setVitB12(int mVitB) {
+	public void setVitB12(double mVitB) {
 		this.mVitB12 = mVitB;
 	}
 
@@ -321,7 +321,7 @@ public class NutritionFacts {
 		return mCholine + "mg";
 	}
 
-	public void setCholine(int mCholine) {
+	public void setCholine(double mCholine) {
 		this.mCholine = mCholine;
 	}
 
@@ -329,7 +329,7 @@ public class NutritionFacts {
 		return mVitK + "mcg";
 	}
 
-	public void setVitK(int mVitK) {
+	public void setVitK(double mVitK) {
 		this.mVitK = mVitK;
 	}
 
@@ -337,7 +337,7 @@ public class NutritionFacts {
 		return mFolicAcid + "mcg";
 	}
 
-	public void setFolicAcid(int mFolicAcid) {
+	public void setFolicAcid(double mFolicAcid) {
 		this.mFolicAcid = mFolicAcid;
 	}
 
@@ -345,7 +345,7 @@ public class NutritionFacts {
 		return mFolateFood + "mcg";
 	}
 
-	public void setFolateFood(int mFolateFood) {
+	public void setFolateFood(double mFolateFood) {
 		this.mFolateFood = mFolateFood;
 	}
 
@@ -353,7 +353,7 @@ public class NutritionFacts {
 		return mFolateDFE + "mcg";
 	}
 
-	public void setFolateDFE(int mFolateDFE) {
+	public void setFolateDFE(double mFolateDFE) {
 		this.mFolateDFE = mFolateDFE;
 	}
 
@@ -361,7 +361,7 @@ public class NutritionFacts {
 		return mVitEAdded + "mg";
 	}
 
-	public void setVitEAdded(int mVitEAdded) {
+	public void setVitEAdded(double mVitEAdded) {
 		this.mVitEAdded = mVitEAdded;
 	}
 
@@ -369,7 +369,7 @@ public class NutritionFacts {
 		return mVitBAdded + "mcg";
 	}
 
-	public void setVitBAdded(int mVitBAdded) {
+	public void setVitBAdded(double mVitBAdded) {
 		this.mVitBAdded = mVitBAdded;
 	}
 
@@ -377,7 +377,7 @@ public class NutritionFacts {
 		return mCholesterol + "mg";
 	}
 
-	public void setCholesterol(int mCholesterol) {
+	public void setCholesterol(double mCholesterol) {
 		this.mCholesterol = mCholesterol;
 	}
 
@@ -385,7 +385,7 @@ public class NutritionFacts {
 		return mSatFat + "g";
 	}
 
-	public void setSatFat(int mSatFat) {
+	public void setSatFat(double mSatFat) {
 		this.mSatFat = mSatFat;
 	}
 

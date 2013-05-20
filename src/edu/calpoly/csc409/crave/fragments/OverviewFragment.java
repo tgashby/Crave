@@ -48,9 +48,9 @@ public class OverviewFragment extends Fragment {
 		String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
 		
 		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
-		int val;
+		double val;
 		for (int i = 0; i < nutrCursor.getCount(); i++) {
-			val = (int) nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
+			val = nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
 			
 			switch (nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")))
 			{
