@@ -54,8 +54,7 @@ public class NearMeFragment extends Fragment {
 	
 	// Web Constants
 	private static final int STATUS_OK = 200;
-	
-	@SuppressLint("NewApi")
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
