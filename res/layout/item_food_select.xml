@@ -8,11 +8,13 @@
     <TextView
         android:id="@+id/general_food_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/specific_food_desc"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="14dp"/>
 
 </LinearLayout>
