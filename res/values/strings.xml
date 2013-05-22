@@ -10,7 +10,9 @@
     <string name="search_again">Search Again</string>
     <string name="title_activity_food_select">FoodSelectActivity</string>
     <string name="hello_world">Hello world!</string>
-    
+
+    <string name="what_are_you_craving">What are you craving?</string>
+
     <!-- Overview Nutrition Label Text -->
     <string name="nutrition_label">Nutrition Facts</string>
     <string name="servingsize">Serving Size</string>
