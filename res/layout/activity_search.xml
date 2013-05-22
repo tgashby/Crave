@@ -24,8 +24,8 @@
         <EditText
             android:id="@+id/crave_search"
             android:layout_below="@+id/search_prompt"
+            android:padding="10dp"
             android:inputType="text"
-            android:gravity="center"
             android:background="@drawable/search_box"
             android:layout_width="match_parent"
             android:layout_height="40dp" />
