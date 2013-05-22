@@ -7,10 +7,10 @@
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!-- API 14 theme customizations can go here. -->
-        <item name="android:actionBarStyle">@style/CraveActionBarTab</item>
+        <!--<item name="android:actionBarStyle">@style/Crave.TabView</item>-->
     </style>
 
-    <style name="CraveActionBarTab" parent="android:Widget.ActionBar.TabView">
+    <style name="Crave.TabView" parent="android:Widget.ActionBar.TabView">
         <item name="android:width">60dp</item>
     </style>
 
