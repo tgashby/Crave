@@ -72,9 +72,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		});
 		
 		for (int i = 0; i < TAB_COUNT; i++) {
-			actionBar.addTab(actionBar.newTab()
-					.setText(mSectionsPagerAdapter.getPageTitle(i))
-					.setTabListener(this));
+            ActionBar.Tab newTab = actionBar.newTab();
+            newTab.setTabListener(this);
+
+            switch (i) {
+                case OVERVIEW_POS:
+                    newTab.setIcon(R.drawable.overview);
+                    break;
+
+                case RECIPE_POS:
+                    newTab.setIcon(R.drawable.recipes);
+                    break;
+
+                case NEAR_ME_POS:
+                    newTab.setIcon(R.drawable.near_me);
+                    break;
+
+                case ALTERNATIVES_POS:
+                    newTab.setIcon(R.drawable.alternatives);
+                    break;
+            }
+
+			actionBar.addTab(newTab);
 		}
 		
 //		mFoodCursor = USDADatabaseManager.searchForFood(foodStr);
