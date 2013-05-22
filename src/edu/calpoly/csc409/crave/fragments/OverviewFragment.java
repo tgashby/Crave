@@ -21,9 +21,7 @@ import android.widget.Toast;
 public class OverviewFragment extends Fragment {
 	NutritionFacts m_nutFacts;
 	protected String mFoodStr;
-	
-	
-	@SuppressLint("NewApi")
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

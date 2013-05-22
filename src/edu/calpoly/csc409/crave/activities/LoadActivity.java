@@ -1,5 +1,9 @@
 package edu.calpoly.csc409.crave.activities;
 
+import android.content.Context;
+import android.location.LocationManager;
+import android.provider.Settings;
+import android.widget.Toast;
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import android.os.Bundle;
@@ -10,31 +14,41 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 public class LoadActivity extends Activity {
+    private static final int ENABLE_GPS_REQUEST_CODE = 1;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load);
 		
 		// I'M IMPORTANT, DON'T FORGET ABOUT ME
 		USDADatabaseManager.initialize(this);
-		
-		View rootView = findViewById(android.R.id.content);
-		
-		rootView.setOnClickListener(new OnClickListener () {
-			@Override
-			public void onClick(View view) {
-				goToSearchActivity();
-			}
-		});
+
+        LocationManager locManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+        if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            Toast.makeText(this, "Please Enable GPS", Toast.LENGTH_SHORT).show();
+            startActivityForResult(intent, ENABLE_GPS_REQUEST_CODE);
+        }
+        else {
+            goToSearchActivity();
+        }
 	}
 
-	protected void goToSearchActivity() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ENABLE_GPS_REQUEST_CODE) {
+            goToSearchActivity();
+        }
+    }
+
+    protected void goToSearchActivity() {
 		Intent intent = new Intent(this, SearchActivity.class);
 		
 		this.startActivity(intent);
 	}
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
