@@ -70,7 +70,7 @@ public class NutritionFacts {
 	}
 
 	public String getCaloriesString() {
-		return mCalories + "kcal";
+		return Double.toString(mCalories);
 	}
 
 	public void setCalories(double mCalories) {
