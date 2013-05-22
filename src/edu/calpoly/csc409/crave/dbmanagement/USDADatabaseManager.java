@@ -69,16 +69,6 @@ public class USDADatabaseManager {
 			return null;
 		}
 		
-		/*Cursor tableNames = mReadableDB.rawQuery("select name from sqlite_master where type = ?", new String[] { "table" });
-		Log.d("~Table Count~", tableNames.getCount()+"");
-		tableNames.moveToFirst();
-		Log.d("~Table Names~", "test");
-		Log.d("~Table Names~", tableNames.getString(0));
-		tableNames.moveToNext();
-		Log.d("~Table Names~", tableNames.getString(0));
-		tableNames.moveToNext();
-		Log.d("~Table Names~", tableNames.getString(0));*/
-		
 		// LOLOLOL me neither...		
 		Cursor toRet;
 		
@@ -105,17 +95,6 @@ public class USDADatabaseManager {
 			return null;
 		}
 		
-		/*Cursor tableNames = mReadableDB.rawQuery("select name from sqlite_master where type = ?", new String[] { "table" });
-		Log.d("~Table Count~", tableNames.getCount()+"");
-		tableNames.moveToFirst();
-		Log.d("~Table Names~", "test");
-		Log.d("~Table Names~", tableNames.getString(0));
-		tableNames.moveToNext();
-		Log.d("~Table Names~", tableNames.getString(0));
-		tableNames.moveToNext();
-		Log.d("~Table Names~", tableNames.getString(0));*/
-		
-		// LOLOLOL me neither...		
 		Cursor toRet;
 		
 		/*toRet = mReadableDB.rawQuery("Select * FROM Nutrient_Definition def INNER JOIN Nutrient_Data data ON def.Nutr_No = data.Nutr_No" +
