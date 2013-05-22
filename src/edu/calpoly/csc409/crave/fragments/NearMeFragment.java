@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.URLEncoder;
 import java.util.List;
 
+import android.content.Intent;
+import android.provider.Settings;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -39,14 +41,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-/**
- * KNOWN ISSUES:
- * This relies on GPS being on. If it isn't the app crashes!
- */
-
 public class NearMeFragment extends Fragment {
 	private GoogleMap mMap;
-	
+    private boolean mUseGPS;
+
 	// Places API constants
 	private static final String PLACES_API_KEY = "AIzaSyD6sNTujHh7moB345pdeqk5XBCO4j32l_s";
 	private static final int SEARCH_RADIUS = 2000;
@@ -62,9 +60,18 @@ public class NearMeFragment extends Fragment {
 				container, false);
 		
 		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY).trim();
-		
+
+
+        LocationManager locManager = (LocationManager)this.getActivity()
+                .getSystemService(Context.LOCATION_SERVICE);
+
 		mMap = ((SupportMapFragment)this.getFragmentManager()
 									 .findFragmentById(R.id.near_me_map)).getMap();
+
+        mUseGPS = false;
+        if (locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            mUseGPS = true;
+        }
 		
 		if (this.mMap != null) {
 			this.mMap.setMyLocationEnabled(true);
@@ -75,11 +82,15 @@ public class NearMeFragment extends Fragment {
 			uiSettings.setCompassEnabled(true);
 		}
 		
-		LocationManager locManager = (LocationManager)this.getActivity()
-									  .getSystemService(Context.LOCATION_SERVICE);
-		
 		try {
-			Location loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Location loc;
+            if (mUseGPS) {
+                loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
+            else {
+                loc = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
+
 			String placesSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/" +
 				    "json?location="+loc.getLatitude()+","+loc.getLongitude()+
 				    "&keyword=" + URLEncoder.encode(foodStr, "UTF-8") +
@@ -95,8 +106,8 @@ public class NearMeFragment extends Fragment {
 				
 		return rootView;
 	}
-	
-	private class GetPlaces extends AsyncTask<String, Void, String> {
+
+    private class GetPlaces extends AsyncTask<String, Void, String> {
 
 		@Override
 		protected String doInBackground(String... placesURL) {
