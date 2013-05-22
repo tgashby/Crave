@@ -167,66 +167,66 @@ public class OverviewFragment extends Fragment {
 	private void initLayout(View rootView) {
 		TextView currView;
 		
-		currView = ((TextView)rootView.findViewById(R.id.overview_calcium));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getCalciumString());
+//		currView = ((TextView)rootView.findViewById(R.id.overview_calcium));
+//		currView.setText(currView.getText() + m_nutFacts.getCalciumString());
 		
 		currView = ((TextView)rootView.findViewById(R.id.overview_calories));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getCaloriesString());
+		currView.setText(currView.getText() + m_nutFacts.getCaloriesString());
 		
-		// TODO
-		currView = ((TextView)rootView.findViewById(R.id.overview_caloriesfromfat));
-		currView.setText(currView.getText() + ": " + "CAL_FROM_FAT_COMP");
+//		// TODO
+//		currView = ((TextView)rootView.findViewById(R.id.overview_caloriesfromfat));
+//		currView.setText(currView.getText() + "CAL_FROM_FAT_COMP");
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_cholesterol));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getCholesterolString());
+		currView.setText(currView.getText() + m_nutFacts.getCholesterolString());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_dietaryfiber));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getFiberString());
+		currView.setText(currView.getText() + m_nutFacts.getFiberString());
 
-		currView = ((TextView)rootView.findViewById(R.id.overview_iron));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getIronString());
+//		currView = ((TextView)rootView.findViewById(R.id.overview_iron));
+//		currView.setText(currView.getText() + m_nutFacts.getIronString());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_protein));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getProteinString());
+		currView.setText(currView.getText() + m_nutFacts.getProteinString());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_saturatedfat));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getSatFatString());
+		currView.setText(currView.getText() + m_nutFacts.getSatFatString());
 
 		// TODO
 		currView = ((TextView)rootView.findViewById(R.id.overview_servingsize));
-		currView.setText(currView.getText() + ": " + "SERV_SIZE");
+		currView.setText(currView.getText() + "SERV_SIZE");
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_sodium));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getSodiumString());
+		currView.setText(currView.getText() + m_nutFacts.getSodiumString());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_sugars));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getSugarString());
+		currView.setText(currView.getText() + m_nutFacts.getSugarString());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_totalcarbs));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getCarbsString());
+		currView.setText(currView.getText() + m_nutFacts.getCarbsString());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_totalfat));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getTotalFatString());
+		currView.setText(currView.getText() + m_nutFacts.getTotalFatString());
 
-		// TODO
-		currView = ((TextView)rootView.findViewById(R.id.overview_transfat));
-		currView.setText(currView.getText() + ": " + "TRANS_FAT");
-
-		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminA));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getVitAString());
-
-		// TODO
-		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminB));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getVitB12String());
-
-		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminC));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getVitCString());
-
-		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminD));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getVitDString());
-
-		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminE));
-		currView.setText(currView.getText() + ": " + m_nutFacts.getVitEString());
+//		// TODO
+//		currView = ((TextView)rootView.findViewById(R.id.overview_transfat));
+//		currView.setText(currView.getText() + "TRANS_FAT");
+//
+//		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminA));
+//		currView.setText(currView.getText() + m_nutFacts.getVitAString());
+//
+//		// TODO
+//		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminB));
+//		currView.setText(currView.getText() + m_nutFacts.getVitB12String());
+//
+//		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminC));
+//		currView.setText(currView.getText() + m_nutFacts.getVitCString());
+//
+//		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminD));
+//		currView.setText(currView.getText() + m_nutFacts.getVitDString());
+//
+//		currView = ((TextView)rootView.findViewById(R.id.overview_vitaminE));
+//		currView.setText(currView.getText() + m_nutFacts.getVitEString());
 		
 	}
 }

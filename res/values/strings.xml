@@ -12,6 +12,7 @@
     <string name="hello_world">Hello world!</string>
     
     <!-- Overview Nutrition Label Text -->
+    <string name="nutrition_label">Nutrition Facts</string>
     <string name="servingsize">Serving Size</string>
     <string name="calories">Calories</string>
     <string name="caloriesfromfat">Calories From Fat</string>
