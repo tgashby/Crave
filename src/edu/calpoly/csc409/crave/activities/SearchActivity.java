@@ -1,14 +1,18 @@
 package edu.calpoly.csc409.crave.activities;
 
 import edu.calpoly.csc409.crave.R;
+import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SearchActivity extends Activity {
 
@@ -39,6 +43,21 @@ public class SearchActivity extends Activity {
 	}
 
 	protected void moveToMainActivity(String foodString) {
+		
+		Cursor foodCursor = USDADatabaseManager.getNDBNO(foodString);
+		
+		Log.d("~~Database Query getNDBNO~~", foodCursor.getCount()+"");
+		
+		if (foodCursor == null || foodCursor.getCount() == 0) {
+			Log.d("~~Database Query getNDBNO~~", "In the for loop!");
+			
+			Toast toast = Toast.makeText(this, "Food Not Found", Toast.LENGTH_SHORT);
+	    	toast.show();
+			
+	    	m_vwCraveSearch.setText("");
+			return;
+		}
+		
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra(SEARCH_STRING_KEY, foodString);
 		

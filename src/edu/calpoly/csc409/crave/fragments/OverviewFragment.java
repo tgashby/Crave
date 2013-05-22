@@ -2,9 +2,11 @@ package edu.calpoly.csc409.crave.fragments;
 
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.activities.MainActivity;
+import edu.calpoly.csc409.crave.activities.SearchActivity;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import edu.calpoly.csc409.crave.pojos.NutritionFacts;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class OverviewFragment extends Fragment {
 	NutritionFacts m_nutFacts;
@@ -42,12 +45,14 @@ public class OverviewFragment extends Fragment {
 		m_nutFacts = new NutritionFacts();
 		
 		Cursor foodCursor = USDADatabaseManager.getNDBNO(mFoodStr);
-		Log.d("~~Database Query getNDBNO~~", foodCursor.getString(foodCursor.getColumnIndex("NDB_No")));
+		
+		//Log.d("~~Database Query getNDBNO~~", foodCursor.getString(foodCursor.getColumnIndex("NDB_No")));
 		
 		//Currently just uses the first entry
 		String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
 		
 		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
+		
 		double val;
 		for (int i = 0; i < nutrCursor.getCount(); i++) {
 			val = nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
