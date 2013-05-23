@@ -122,7 +122,7 @@ public class USDADatabaseManager {
 	 * @return an arraylist of alternative search terms
 	 * the USDADatabaseManager has not been initialized.
 	 */
-	public static ArrayList<String> getAlternatives(String ndbno) {
+	/*public static ArrayList<String> getAlternatives(String ndbno) {
 		// Don't even bother if USDADatabaseManager is uninitialized
 		if (mInstance == null) {
 			Log.e("USDADatabaseManager", "searchForFood called on uninitialized manager");
@@ -135,7 +135,7 @@ public class USDADatabaseManager {
 		
 		
 		return alts;
-	}
+	}*/
 	
 	/**
 	 * Query the DB for the various Nutrition Facts
