@@ -2,25 +2,20 @@ package edu.calpoly.csc409.crave.fragments;
 
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.activities.MainActivity;
-import edu.calpoly.csc409.crave.activities.SearchActivity;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import edu.calpoly.csc409.crave.pojos.NutritionFacts;
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class OverviewFragment extends Fragment {
 	NutritionFacts m_nutFacts;
 	protected String mFoodStr;
+    Cursor mFoodCursor;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +24,8 @@ public class OverviewFragment extends Fragment {
 				container, false);
 		
 		mFoodStr = this.getArguments().getString(MainActivity.FOOD_STRING_KEY);
-		
+        mFoodCursor = USDADatabaseManager.getNDBNO(mFoodStr);
+
 		initializeNutFacts();
 		initLayout(rootView);
 		
@@ -42,12 +38,10 @@ public class OverviewFragment extends Fragment {
 	private void initializeNutFacts() {
 		m_nutFacts = new NutritionFacts();
 		
-		Cursor foodCursor = USDADatabaseManager.getNDBNO(mFoodStr);
-		
-		//Log.d("~~Database Query getNDBNO~~", foodCursor.getString(foodCursor.getColumnIndex("NDB_No")));
+		//Log.d("~~Database Query getNDBNO~~", mFoodCursor.getString(mFoodCursor.getColumnIndex("NDB_No")));
 		
 		//Currently just uses the first entry
-		String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
+		String ndbno = mFoodCursor.getString(mFoodCursor.getColumnIndex("NDB_No"));
 		
 		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
 		
@@ -99,6 +93,12 @@ public class OverviewFragment extends Fragment {
 	 */
 	private void initLayout(View rootView) {
 		TextView currView;
+
+        currView = ((TextView)rootView.findViewById(R.id.overview_food_title));
+        currView.setText(mFoodCursor.getString(mFoodCursor.getColumnIndex("Search")));
+
+        currView = ((TextView)rootView.findViewById(R.id.overview_food_desc));
+        currView.setText(mFoodCursor.getString(mFoodCursor.getColumnIndex("Shrt_Desc")).toLowerCase());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_calories));
 		currView.setText(currView.getText() + m_nutFacts.getCaloriesString());
