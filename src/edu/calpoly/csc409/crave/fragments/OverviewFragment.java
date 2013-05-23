@@ -26,64 +26,11 @@ public class OverviewFragment extends Fragment {
 		mFoodStr = this.getArguments().getString(MainActivity.FOOD_STRING_KEY);
         mFoodCursor = USDADatabaseManager.getNDBNO(mFoodStr);
 
-		initializeNutFacts();
+        USDADatabaseManager.initializeNutFacts(mFoodStr);
+        m_nutFacts = USDADatabaseManager.getNutFacts();
 		initLayout(rootView);
 		
 		return rootView;
-	}
-
-	/**
-	 * Query the DB for the various Nutrition Facts
-	 */
-	private void initializeNutFacts() {
-		m_nutFacts = new NutritionFacts();
-		
-		//Log.d("~~Database Query getNDBNO~~", mFoodCursor.getString(mFoodCursor.getColumnIndex("NDB_No")));
-		
-		//Currently just uses the first entry
-		String ndbno = mFoodCursor.getString(mFoodCursor.getColumnIndex("NDB_No"));
-		
-		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
-		
-		double val;
-		for (int i = 0; i < nutrCursor.getCount(); i++) {
-			val = nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
-			
-			switch (nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")))
-			{
-			case 208:
-				m_nutFacts.setCalories(val);
-				break;
-
-			case 205:
-				m_nutFacts.setCarbs(val);
-				break;
-			case 601:
-				m_nutFacts.setCholesterol(val);
-				break;
-			case 291:
-				m_nutFacts.setFiber(val);
-				break;
-			case 203:
-				m_nutFacts.setProtein(val);
-				break;
-			case 606:
-				m_nutFacts.setSatFat(val);
-				break;
-			case 307:
-				m_nutFacts.setSodium(val);
-				break;
-			case 269:
-				m_nutFacts.setSugar(val);
-				break;
-			case 204:
-				m_nutFacts.setTotalFat(val);
-				break;
-			default:
-			}
-			
-			nutrCursor.moveToNext();
-		}
 	}
 
 	/**

@@ -16,7 +16,7 @@ public class AlternativesFragment extends Fragment {
 				container, false);
 
 		rootView.setBackgroundResource(R.drawable.alt_foods_screen);
-
+		
 		return rootView;
 	}
 }
