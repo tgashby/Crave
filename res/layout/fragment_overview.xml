@@ -33,7 +33,7 @@
             android:id="@+id/overview_nutritionfactslabel"
             android:layout_below="@+id/overview_food_desc"
             android:text="@string/nutrition_label"
-            android:background="@drawable/cell_shape"
+            android:background="@drawable/nut_label"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_width="250dp"
@@ -51,7 +51,7 @@
             android:orientation="vertical">
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -74,7 +74,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -96,7 +96,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -116,7 +116,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -136,7 +136,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -156,7 +156,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -177,7 +177,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -197,7 +197,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -217,7 +217,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -237,7 +237,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/cell_shape"
+                android:background="@drawable/nut_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
