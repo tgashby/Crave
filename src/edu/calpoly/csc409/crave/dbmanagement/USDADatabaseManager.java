@@ -192,11 +192,27 @@ public class USDADatabaseManager {
 			
 			nutrCursor.moveToNext();
 		}
+
+        // Set up serving size string
+        nutrCursor = mReadableDB.rawQuery("Select Amount, Msre_Desc FROM Weight" +
+                " WHERE NDB_No = ?;", new String[] { ndbno });
+
+        nutrCursor.moveToFirst();
+
+        if (nutrCursor.getCount() > 0) {
+            int amtIndex = nutrCursor.getColumnIndex("Amount");
+            int descIndex = nutrCursor.getColumnIndex("Msre_Desc");
+            m_nutFacts.setServSize(nutrCursor.getDouble(amtIndex) + " " +
+             nutrCursor.getString(descIndex));
+        }
+        else {
+            m_nutFacts.setServSize("Unavailable");
+        }
 	}
 	
 	/*
 	 * Getter for the nutrition facts object.
-	 * WARNING: Must initialize nutrtion facts object first.
+	 * WARNING: Must initialize nutrition facts object first.
 	 */
 	public static NutritionFacts getNutFacts() {
 		return m_nutFacts;

@@ -44,6 +44,7 @@ public class NutritionFacts {
 	protected double mVitBAdded;
 	protected double mCholesterol;
 	protected double mSatFat;
+    protected String mServSize;
 
 	public String getProteinString() {
 		return mProtein + "g";
@@ -389,5 +390,12 @@ public class NutritionFacts {
 		this.mSatFat = mSatFat;
 	}
 
+    public String getServSize() {
+        return mServSize;
+    }
+
+    public void setServSize(String servSize) {
+        this.mServSize = servSize;
+    }
 }
 

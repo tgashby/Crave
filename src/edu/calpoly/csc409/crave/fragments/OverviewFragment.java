@@ -35,8 +35,6 @@ public class OverviewFragment extends Fragment {
 
 	/**
 	 * Initialize the layout.
-	 * You shouldn't have to touch this... At least not for Vert Prototype
-	 * Several things missing, don't care for Vert Prototype
 	 */
 	private void initLayout(View rootView) {
 		TextView currView;
@@ -62,9 +60,8 @@ public class OverviewFragment extends Fragment {
 		currView = ((TextView)rootView.findViewById(R.id.overview_saturatedfat));
 		currView.setText(currView.getText() + m_nutFacts.getSatFatString());
 
-		// TODO
 		currView = ((TextView)rootView.findViewById(R.id.overview_servingsize));
-		currView.setText(currView.getText() + "SERV_SIZE");
+		currView.setText(currView.getText() + m_nutFacts.getServSize());
 
 		currView = ((TextView)rootView.findViewById(R.id.overview_sodium));
 		currView.setText(currView.getText() + m_nutFacts.getSodiumString());
