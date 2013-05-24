@@ -9,7 +9,7 @@ import android.widget.TextView;
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.pojos.Place;
 
-public class PlaceView extends LinearLayout implements View.OnClickListener {
+public class PlaceView extends LinearLayout {
     protected Place mPlace;
 
     public PlaceView(Context context, Place place) {
@@ -22,12 +22,9 @@ public class PlaceView extends LinearLayout implements View.OnClickListener {
 
         ((TextView)findViewById(R.id.place_name)).setText(mPlace.getName());
         ((TextView)findViewById(R.id.place_distance)).setText(mPlace.getDistance() + " mi");
-
-        this.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View view) {
-        // Switch fragment view to MapView
+    public Place getPlace() {
+        return mPlace;
     }
 }

@@ -8,9 +8,11 @@ import java.net.URLEncoder;
 import java.util.*;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.Settings;
-import android.widget.ListView;
+import android.widget.*;
 import edu.calpoly.csc409.crave.customviews.PlaceListAdapter;
+import edu.calpoly.csc409.crave.customviews.PlaceView;
 import edu.calpoly.csc409.crave.pojos.Place;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -42,7 +44,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 public class NearMeFragment extends Fragment {
 	private GoogleMap mMap;
@@ -71,6 +72,17 @@ public class NearMeFragment extends Fragment {
 		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY).trim();
 
         mPlacesListView = (ListView)rootView.findViewById(R.id.near_me_places_list);
+        mPlacesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LatLng latLng = ((PlaceView)view).getPlace().getLatLng();
+                String uri = String.format(Locale.ENGLISH,
+                 "http://maps.google.com/maps?daddr=%f,%f", latLng.latitude, latLng.longitude);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                getActivity().startActivity(intent);
+            }
+        });
+
         mPlaceList = new ArrayList<Place>();
 
         mPlaceListAdapter = new PlaceListAdapter(getActivity(), mPlaceList);
@@ -111,7 +123,8 @@ public class NearMeFragment extends Fragment {
 				    "&radius=" + SEARCH_RADIUS + "&sensor=true" +
 				    "&types=" + URLEncoder.encode(PLACE_TYPES, "UTF-8") +
 				    "&key=" + PLACES_API_KEY;
-		
+
+            Toast.makeText(getActivity(), "Getting Places Near You...", Toast.LENGTH_LONG).show();
 			new GetPlaces().execute(placesSearchStr);
 		}
 		catch (Exception e) {
@@ -122,7 +135,6 @@ public class NearMeFragment extends Fragment {
 	}
 
     private class GetPlaces extends AsyncTask<String, Void, String> {
-
 		@Override
 		protected String doInBackground(String... placesURL) {
 			StringBuilder placesBuilder = new StringBuilder();
@@ -219,7 +231,7 @@ public class NearMeFragment extends Fragment {
 //						 .title(placeName));
                         Location.distanceBetween(mLoc.getLatitude(), mLoc.getLongitude(),
                          latLng.latitude, latLng.longitude, dist);
-                        mPlaceList.add(new Place(placeName, dist[0] * MET_TO_MILES));
+                        mPlaceList.add(new Place(placeName, dist[0] * MET_TO_MILES, latLng));
 					}
 				}
 			}
@@ -227,6 +239,7 @@ public class NearMeFragment extends Fragment {
 				e.printStackTrace();
 			}
 
+            Toast.makeText(getActivity(), "Got them!", Toast.LENGTH_SHORT).show();
             mPlaceListAdapter.notifyDataSetChanged();
 		}
 	}
