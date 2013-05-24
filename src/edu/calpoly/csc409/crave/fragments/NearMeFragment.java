@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLEncoder;
-import java.util.List;
+import java.util.*;
 
 import android.content.Intent;
 import android.provider.Settings;
+import android.widget.ListView;
+import edu.calpoly.csc409.crave.customviews.PlaceListAdapter;
+import edu.calpoly.csc409.crave.pojos.Place;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -43,7 +46,11 @@ import android.widget.Toast;
 
 public class NearMeFragment extends Fragment {
 	private GoogleMap mMap;
+    private ListView mPlacesListView;
+    private PlaceListAdapter mPlaceListAdapter;
+    private ArrayList<Place> mPlaceList;
     private boolean mUseGPS;
+    private Location mLoc;
 
 	// Places API constants
 	private static final String PLACES_API_KEY = "AIzaSyD6sNTujHh7moB345pdeqk5XBCO4j32l_s";
@@ -53,6 +60,8 @@ public class NearMeFragment extends Fragment {
 	// Web Constants
 	private static final int STATUS_OK = 200;
 
+    private static final double MET_TO_MILES = 0.000621371;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -61,12 +70,16 @@ public class NearMeFragment extends Fragment {
 		
 		String foodStr = getArguments().getString(MainActivity.FOOD_STRING_KEY).trim();
 
+        mPlacesListView = (ListView)rootView.findViewById(R.id.near_me_places_list);
+        mPlaceList = new ArrayList<Place>();
+
+        mPlaceListAdapter = new PlaceListAdapter(getActivity(), mPlaceList);
+        mPlacesListView.setAdapter(mPlaceListAdapter);
 
         LocationManager locManager = (LocationManager)this.getActivity()
                 .getSystemService(Context.LOCATION_SERVICE);
 
-		mMap = ((SupportMapFragment)this.getFragmentManager()
-									 .findFragmentById(R.id.near_me_map)).getMap();
+		mMap = new SupportMapFragment().getMap();
 
         mUseGPS = false;
         if (locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -83,16 +96,17 @@ public class NearMeFragment extends Fragment {
 		}
 		
 		try {
-            Location loc;
             if (mUseGPS) {
-                loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                mLoc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             }
-            else {
-                loc = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+            // This happens if GPS disabled or something else went wrong
+            if (mLoc == null) {
+                mLoc = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             }
 
 			String placesSearchStr = "https://maps.googleapis.com/maps/api/place/nearbysearch/" +
-				    "json?location="+loc.getLatitude()+","+loc.getLongitude()+
+				    "json?location="+mLoc.getLatitude()+","+mLoc.getLongitude()+
 				    "&keyword=" + URLEncoder.encode(foodStr, "UTF-8") +
 				    "&radius=" + SEARCH_RADIUS + "&sensor=true" +
 				    "&types=" + URLEncoder.encode(PLACE_TYPES, "UTF-8") +
@@ -179,6 +193,7 @@ public class NearMeFragment extends Fragment {
 				LatLng latLng = null;
 				String placeName = "";
 				boolean hasName = false, hasLoc = false;
+                float[] dist = new float[1];
 				
 				for (int placeNdx = 0; placeNdx < numResults; placeNdx++) {
 					place = placesArr.getJSONObject(placeNdx);
@@ -199,15 +214,20 @@ public class NearMeFragment extends Fragment {
 					}
 					
 					if (hasName && hasLoc) {
-						mMap.addMarker(new MarkerOptions()
-						 .position(latLng)
-						 .title(placeName));
+//						mMap.addMarker(new MarkerOptions()
+//						 .position(latLng)
+//						 .title(placeName));
+                        Location.distanceBetween(mLoc.getLatitude(), mLoc.getLongitude(),
+                         latLng.latitude, latLng.longitude, dist);
+                        mPlaceList.add(new Place(placeName, dist[0] * MET_TO_MILES));
 					}
 				}
-			} 
+			}
 			catch (JSONException e) {
 				e.printStackTrace();
 			}
+
+            mPlaceListAdapter.notifyDataSetChanged();
 		}
 	}
 }

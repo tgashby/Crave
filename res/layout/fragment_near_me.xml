@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-         android:id="@+id/near_me_map"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:name="com.google.android.gms.maps.SupportMapFragment"/>
+<!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+         <!--android:id="@+id/near_me_map"-->
+         <!--android:layout_width="match_parent"-->
+         <!--android:layout_height="match_parent"-->
+         <!--android:name="com.google.android.gms.maps.SupportMapFragment"/>-->
 
-<!-- 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-    // Near Me single item, name, distance, icon, etc
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
 
-</RelativeLayout> 
--->
+    <ListView android:id="@+id/near_me_places_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:divider="@color/background_color"
+        android:dividerHeight="15dp"/>
+
+</RelativeLayout>
