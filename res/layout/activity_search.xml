@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingTop="100dp">
+        android:paddingTop="100dp"
+        android:id="@+id/relativeLayout">
         <TextView
             android:id="@+id/search_prompt"
             android:text="@string/what_are_you_craving"
@@ -29,7 +30,12 @@
             android:background="@drawable/search_box"
             android:layout_width="match_parent"
             android:layout_height="40dp" />
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/crave_search"
+            android:layout_alignParentRight="true"
+            android:text="@string/search"/>
     </RelativeLayout>
-
-
 </RelativeLayout>

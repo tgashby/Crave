@@ -1,5 +1,6 @@
 package edu.calpoly.csc409.crave.activities;
 
+import android.widget.Button;
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
 import android.os.Bundle;
@@ -40,6 +41,13 @@ public class SearchActivity extends Activity {
 			}
 			
 		});
+
+        ((Button)findViewById(R.id.search_button)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToMainActivity(m_vwCraveSearch.getText().toString());
+            }
+        });
 	}
 
 	protected void moveToMainActivity(String foodString) {
