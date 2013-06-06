@@ -1,5 +1,7 @@
 package edu.calpoly.csc409.crave.pojos;
 
+import android.util.Log;
+
 public class NutritionFacts {
 	protected double mProtein;
 	protected double mTotalFat;
@@ -45,6 +47,15 @@ public class NutritionFacts {
 	protected double mCholesterol;
 	protected double mSatFat;
     protected String mServSize;
+    protected String mFoodName;
+    
+    public void setFoodName(String name) {
+    	mFoodName = name;
+    }
+    
+    public String getFoodName() {
+    	return mFoodName;
+    }
 
 	public String getProteinString() {
 		return mProtein + "g";
@@ -395,7 +406,35 @@ public class NutritionFacts {
     }
 
     public void setServSize(String servSize) {
-        this.mServSize = servSize;
+    	if (servSize.length() > 25)
+    		this.mServSize = servSize.substring(0, 20);
+    	else
+    		this.mServSize = servSize;
+    }
+    
+    // Double Returning Functions
+    public double getSugar() {
+    	return this.mSugar;
+    }
+    
+    public double getFat() {
+    	return this.mTotalFat;
+    }
+    
+    public double getSalt() {
+    	return this.mSodium;
+    }
+    
+    public void logVals() {
+    	Log.d("NutritionFacts Object", "Calories: " + this.getCaloriesString());
+    	Log.d("NutritionFacts Object", "Total Fat: "+this.getTotalFatString());
+    	Log.d("NutritionFacts Object", "Saturated Fat: "+this.getSatFatString());
+    	Log.d("NutritionFacts Object", "Cholesterol: "+this.getCholesterolString());
+    	Log.d("NutritionFacts Object", "Sodium: "+this.getSodiumString());
+    	Log.d("NutritionFacts Object", "Total Carbohydrate: "+this.getCarbsString());
+    	Log.d("NutritionFacts Object", "Dietary Fiber: "+this.getFiberString());
+    	Log.d("NutritionFacts Object", "Sugars: "+this.getSugarString());
+    	Log.d("NutritionFacts Object", "Protein: "+this.getProteinString());
     }
 }
 

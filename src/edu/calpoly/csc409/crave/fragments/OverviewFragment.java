@@ -28,6 +28,7 @@ public class OverviewFragment extends Fragment {
 
         USDADatabaseManager.initializeNutFacts(mFoodStr);
         m_nutFacts = USDADatabaseManager.getNutFacts();
+        m_nutFacts.logVals();
 		initLayout(rootView);
 		
 		return rootView;

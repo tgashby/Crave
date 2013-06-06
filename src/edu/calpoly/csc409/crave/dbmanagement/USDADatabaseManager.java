@@ -152,10 +152,13 @@ public class USDADatabaseManager {
 		String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
 		
 		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
+		Log.d("~~~", ndbno);
+		m_nutFacts.setFoodName(foodStr);
 		
 		double val;
 		for (int i = 0; i < nutrCursor.getCount(); i++) {
 			val = nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
+			Log.d("~~~", val + " - " + nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")));
 			
 			switch (nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")))
 			{

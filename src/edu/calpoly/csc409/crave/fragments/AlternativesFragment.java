@@ -1,6 +1,8 @@
 package edu.calpoly.csc409.crave.fragments;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.activities.MainActivity;
@@ -25,6 +27,7 @@ public class AlternativesFragment extends ListFragment {
 	protected ListView m_vwListAlt;
 	protected ArrayAdapter<String> adapter;
 	protected ArrayList<String> alts;
+	protected int m_numAlts = 7;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +59,12 @@ public class AlternativesFragment extends ListFragment {
 		this.getActivity().startActivity(intent);
 	  }
 	
-	private ArrayList<String> getAlternatives() {		
+	@SuppressLint("DefaultLocale")
+	private ArrayList<String> getAlternatives() {	
+		double sweetThreshold = 20;
+		double fatThreshold = 10;
+		double saltThreshold = 20;
+		
 		// Generic Healthy Foods
 		// Almonds
 		alts.add("Nuts");
@@ -120,7 +128,7 @@ public class AlternativesFragment extends ListFragment {
 		//alts.add("Flaxseed"); // Uncomment when database is fixed
 		
 		//Greek Yogurt
-		alts.add("Greek");
+		//alts.add("Greek");
 		//alts.add("Greek Yogurt"); // Uncomment when database is fixed
 		
 		//Lentils
@@ -173,6 +181,44 @@ public class AlternativesFragment extends ListFragment {
 		//Walnuts
 		//alts.add("Nuts");
 		//alts.add("Walnuts"); // Uncomment when database is fixed
+		
+		if (m_nutFacts.getSugar() > sweetThreshold) {
+			alts.add("Grape");
+			alts.add("Cheese");
+			alts.add("Beans");
+			alts.add("Chicken");
+			alts.add("Fruit");
+			alts.add("Beef");
+			alts.add("Kale");
+			alts.add("Cabbage");
+			alts.add("Lamb");
+			alts.add("Raisins");
+		}
+		
+		if (m_nutFacts.getFat() > fatThreshold) {
+			alts.add("Turnip Greens");
+			alts.add("Mustard Greens");
+			alts.add("Kale");
+			alts.add("Cheese");
+		}
+		
+		if (m_nutFacts.getSalt() > saltThreshold) {
+			alts.add("Fish");
+		}
+		
+		if (m_nutFacts.getFoodName().toLowerCase().contains("chocolate")) {
+			alts.add("Fruit");
+		}
+		
+		// Remove Duplicates
+		HashSet<String> h = new HashSet<String>(alts);
+		ArrayList<String> temp = new ArrayList<String>();
+		alts.clear();
+		temp.addAll(h);
+		Collections.shuffle(temp);
+		for (int i = 0; i < m_numAlts; i++) {
+			alts.add(temp.get(i));
+		}
 		
 		return alts;
 	}
