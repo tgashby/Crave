@@ -3,6 +3,7 @@ package edu.calpoly.csc409.crave.activities;
 import android.content.Context;
 import android.location.LocationManager;
 import android.provider.Settings;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import edu.calpoly.csc409.crave.R;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
@@ -20,19 +21,28 @@ public class LoadActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load);
-		
+
 		// I'M IMPORTANT, DON'T FORGET ABOUT ME
 		USDADatabaseManager.initialize(this);
 
-        LocationManager locManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
-        if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            Toast.makeText(this, "Please Enable GPS", Toast.LENGTH_SHORT).show();
-            startActivityForResult(intent, ENABLE_GPS_REQUEST_CODE);
-        }
-        else {
-            goToSearchActivity();
-        }
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.load_layout);
+
+        final Context tmpCxt = this;
+        layout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LocationManager locManager = (LocationManager)tmpCxt.getSystemService(Context.LOCATION_SERVICE);
+                if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    Toast.makeText(tmpCxt, "Please Enable GPS", Toast.LENGTH_SHORT).show();
+                    startActivityForResult(intent, ENABLE_GPS_REQUEST_CODE);
+                }
+                else {
+                    goToSearchActivity();
+                }
+            }
+        }, 5000);
+
 	}
 
     @Override
@@ -46,7 +56,7 @@ public class LoadActivity extends Activity {
 
     protected void goToSearchActivity() {
 		Intent intent = new Intent(this, SearchActivity.class);
-		
+
 		this.startActivity(intent);
 	}
 
