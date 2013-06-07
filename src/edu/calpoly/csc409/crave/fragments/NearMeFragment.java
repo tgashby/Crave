@@ -239,7 +239,13 @@ public class NearMeFragment extends Fragment {
 				e.printStackTrace();
 			}
 
-            Toast.makeText(getActivity(), "Got them!", Toast.LENGTH_SHORT).show();
+            if (mPlaceList.size() > 0) {
+                Toast.makeText(getActivity(), "Got them!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getActivity(), "Unfortunately we couldn't find anything near you.", Toast.LENGTH_LONG).show();
+            }
+            
             mPlaceListAdapter.notifyDataSetChanged();
 		}
 	}
