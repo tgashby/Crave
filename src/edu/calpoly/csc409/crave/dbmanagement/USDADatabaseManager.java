@@ -79,7 +79,7 @@ public class USDADatabaseManager {
 		// LOLOLOL me neither...		
 		Cursor toRet;
 		
-		toRet = mReadableDB.rawQuery("SELECT NDB_No, Search, Shrt_Desc FROM Food_Description " +
+		toRet = mReadableDB.rawQuery("SELECT NDB_No, FdGrp_Cd, Search, Shrt_Desc FROM Food_Description " +
 				"WHERE NDB_No LIKE ?;", new String[] { ndbno });
 		
 		
