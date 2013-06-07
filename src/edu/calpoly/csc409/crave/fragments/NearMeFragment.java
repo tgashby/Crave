@@ -77,7 +77,7 @@ public class NearMeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LatLng latLng = ((PlaceView)view).getPlace().getLatLng();
                 String uri = String.format(Locale.ENGLISH,
-                 "http://maps.google.com/maps?daddr=%f,%f", latLng.latitude, latLng.longitude);
+                 "http://maps.google.com/maps?daddr=%f,%f(%s)", latLng.latitude, latLng.longitude, ((PlaceView)view).getPlace().getName());
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 getActivity().startActivity(intent);
             }
