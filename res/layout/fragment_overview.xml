@@ -42,6 +42,16 @@
             android:paddingTop="20dp"
             android:layout_centerHorizontal="true" />
 
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/overview_nutritionfactslabel"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_launcher"
+            />
+
         <TableLayout
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -256,5 +266,6 @@
                     android:textSize="12sp" />
             </TableRow>
         </TableLayout>
+
     </RelativeLayout>
 </RelativeLayout>
