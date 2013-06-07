@@ -53,7 +53,7 @@
         </activity>
         <activity
             android:name="edu.calpoly.csc409.crave.activities.FoodSelectActivity"
-            android:label="@string/title_activity_food_select" >
+            android:label="@string/app_name" >
         </activity>
     </application>
 
