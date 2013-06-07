@@ -245,7 +245,7 @@ public class NearMeFragment extends Fragment {
             else {
                 Toast.makeText(getActivity(), "Unfortunately we couldn't find anything near you.", Toast.LENGTH_LONG).show();
             }
-            
+
             mPlaceListAdapter.notifyDataSetChanged();
 		}
 	}
