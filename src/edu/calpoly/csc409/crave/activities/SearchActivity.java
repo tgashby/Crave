@@ -20,6 +20,7 @@ public class SearchActivity extends Activity {
 	protected EditText m_vwCraveSearch;
 	
 	public static final String SEARCH_STRING_KEY = "search_string";
+	public static final String NDBNO_STRING_KEY = "ndbno_string";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,22 +55,32 @@ public class SearchActivity extends Activity {
 		
 		Cursor foodCursor = USDADatabaseManager.getNDBNO(foodString);
 		
-		Log.d("~~Database Query getNDBNO~~", foodCursor.getCount()+"");
+		//Log.d("~~Database Query getNDBNO~~", foodCursor.getCount()+"");
 		
 		if (foodCursor == null || foodCursor.getCount() == 0) {
-			Log.d("~~Database Query getNDBNO~~", "In the for loop!");
+			//Log.d("~~Database Query getNDBNO~~", "In the for loop!");
 			
 			Toast toast = Toast.makeText(this, "Food Not Found", Toast.LENGTH_SHORT);
 	    	toast.show();
 			
 	    	m_vwCraveSearch.setText("");
 			return;
+		} else if (foodCursor.getCount() == 1) {
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.putExtra(MainActivity.FOOD_STRING_KEY, foodCursor.getString(foodCursor.getColumnIndex("Search")));
+			intent.putExtra(MainActivity.NDBNO_STRING_KEY, foodCursor.getString(foodCursor.getColumnIndex("NDB_No")));
+			startActivity(intent);
+		} else if (foodCursor.getCount() > 500) {
+			Log.d("~~Database Query getNDBNO~~", foodCursor.getCount()+"");
+			Toast toast = Toast.makeText(this, "Please Narrow Your Search", Toast.LENGTH_SHORT);
+	    	toast.show();
+			return;
+		} else {
+			Intent intent = new Intent(this, FoodSelectActivity.class);
+			intent.putExtra(SEARCH_STRING_KEY, foodString);
+			
+			this.startActivity(intent);
 		}
-		
-		Intent intent = new Intent(this, MainActivity.class);
-		intent.putExtra(SEARCH_STRING_KEY, foodString);
-		
-		this.startActivity(intent);
 	}
 
 	@Override

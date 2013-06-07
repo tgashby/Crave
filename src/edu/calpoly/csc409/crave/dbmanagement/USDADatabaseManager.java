@@ -62,6 +62,32 @@ public class USDADatabaseManager {
 	}
 	
 	/**
+	 * Get a food from its ndbno. 
+	 * WARNING: If USDADatabaseManager has not been initialized,
+	 * it does NOTHING.
+	 * @param ndbno - ndbno to find
+	 * @return a Cursor pointing to all rows that matched the food, or null if
+	 * the USDADatabaseManager has not been initialized.
+	 */
+	public static Cursor getFoodFromNDBNO(String ndbno) {
+		// Don't even bother if USDADatabaseManager is uninitialized
+		if (mInstance == null) {
+			Log.e("USDADatabaseManager", "searchForFood called on uninitialized manager");
+			return null;
+		}
+		
+		// LOLOLOL me neither...		
+		Cursor toRet;
+		
+		toRet = mReadableDB.rawQuery("SELECT NDB_No, Search, Shrt_Desc FROM Food_Description " +
+				"WHERE NDB_No LIKE ?;", new String[] { ndbno });
+		
+		
+		toRet.moveToFirst();
+		return toRet;
+	}
+	
+	/**
 	 * Search for a food by name and get its unique identifier. 
 	 * WARNING: If USDADatabaseManager has not been initialized,
 	 * it does NOTHING.
@@ -79,7 +105,7 @@ public class USDADatabaseManager {
 		// LOLOLOL me neither...		
 		Cursor toRet;
 		
-		toRet = mReadableDB.rawQuery("SELECT NDB_No, Search, Shrt_Desc FROM Food_Description " +
+		toRet = mReadableDB.rawQuery("SELECT NDB_No, Search, Shrt_Desc, Long_Desc FROM Food_Description " +
 				"WHERE Search LIKE ?;", new String[] { "%"+food+"%" });
 		
 		
@@ -141,15 +167,15 @@ public class USDADatabaseManager {
 	 * Query the DB for the various Nutrition Facts
 	 * foodStr - String search term, searches the Search col of the db
 	 */
-	public static void initializeNutFacts(String foodStr) {
+	public static void initializeNutFacts(String foodStr, String ndbno) {
 		m_nutFacts = new NutritionFacts();
 		
-		Cursor foodCursor = getNDBNO(foodStr);
+		//Cursor foodCursor = getNDBNO(foodStr);
 		
 		//Log.d("~~Database Query getNDBNO~~", foodCursor.getString(foodCursor.getColumnIndex("NDB_No")));
 		
 		//Currently just uses the first entry
-		String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
+		//String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
 		
 		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
 		Log.d("~~~", ndbno);
@@ -158,7 +184,7 @@ public class USDADatabaseManager {
 		double val;
 		for (int i = 0; i < nutrCursor.getCount(); i++) {
 			val = nutrCursor.getDouble(nutrCursor.getColumnIndex("Nutr_Val"));
-			Log.d("~~~", val + " - " + nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")));
+			//Log.d("~~~", val + " - " + nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")));
 			
 			switch (nutrCursor.getInt(nutrCursor.getColumnIndex("Nutr_No")))
 			{

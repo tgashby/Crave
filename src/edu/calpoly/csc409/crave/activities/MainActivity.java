@@ -47,15 +47,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	
 	protected Cursor mFoodCursor;
 	protected String mFoodStr;
+	protected String mNDBNOStr;
 	
 	public static final String FOOD_STRING_KEY = "food_string";
+	public static final String NDBNO_STRING_KEY = "ndbno_string";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		mFoodStr = this.getIntent().getStringExtra(SearchActivity.SEARCH_STRING_KEY);
+		mFoodStr = this.getIntent().getStringExtra(MainActivity.FOOD_STRING_KEY);
+		//Log.d("~FoodSelectActivity~", "hi2.3");
+		mNDBNOStr = this.getIntent().getStringExtra(MainActivity.NDBNO_STRING_KEY);
+		//Log.d("~FoodSelectActivity~", "hi2.4");
 		
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -172,6 +177,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// Add the food item they are search for so each fragment has access
 			Bundle args = new Bundle();
 			args.putString(FOOD_STRING_KEY, mFoodStr);
+			args.putString(NDBNO_STRING_KEY, mNDBNOStr);
 			frag.setArguments(args);
 			
 			return frag;

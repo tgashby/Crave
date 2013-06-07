@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class OverviewFragment extends Fragment {
 	NutritionFacts m_nutFacts;
 	protected String mFoodStr;
+	protected String mNDBNO;
     Cursor mFoodCursor;
 
 	@Override
@@ -24,11 +25,12 @@ public class OverviewFragment extends Fragment {
 				container, false);
 		
 		mFoodStr = this.getArguments().getString(MainActivity.FOOD_STRING_KEY);
-        mFoodCursor = USDADatabaseManager.getNDBNO(mFoodStr);
+        mNDBNO = this.getArguments().getString(MainActivity.NDBNO_STRING_KEY);
+		mFoodCursor = USDADatabaseManager.getFoodFromNDBNO(mNDBNO);
 
-        USDADatabaseManager.initializeNutFacts(mFoodStr);
+        USDADatabaseManager.initializeNutFacts(mFoodStr, mNDBNO);
         m_nutFacts = USDADatabaseManager.getNutFacts();
-        m_nutFacts.logVals();
+        //m_nutFacts.logVals();
 		initLayout(rootView);
 		
 		return rootView;

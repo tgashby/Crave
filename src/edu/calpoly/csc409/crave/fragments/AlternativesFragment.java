@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import edu.calpoly.csc409.crave.R;
+import edu.calpoly.csc409.crave.activities.FoodSelectActivity;
 import edu.calpoly.csc409.crave.activities.MainActivity;
 import edu.calpoly.csc409.crave.activities.SearchActivity;
 import edu.calpoly.csc409.crave.dbmanagement.USDADatabaseManager;
@@ -53,7 +54,7 @@ public class AlternativesFragment extends ListFragment {
 		
 	    String search = l.getItemAtPosition(position).toString();
 	    
-	    Intent intent = new Intent(this.getActivity(), MainActivity.class);
+	    Intent intent = new Intent(this.getActivity(), FoodSelectActivity.class);
 		intent.putExtra(SearchActivity.SEARCH_STRING_KEY, search);
 		
 		this.getActivity().startActivity(intent);
