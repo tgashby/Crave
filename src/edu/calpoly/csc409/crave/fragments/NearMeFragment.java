@@ -46,8 +46,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class NearMeFragment extends Fragment {
-	private GoogleMap mMap;
-    private ListView mPlacesListView;
+	private ListView mPlacesListView;
     private PlaceListAdapter mPlaceListAdapter;
     private ArrayList<Place> mPlaceList;
     private boolean mUseGPS;
@@ -91,21 +90,10 @@ public class NearMeFragment extends Fragment {
         LocationManager locManager = (LocationManager)this.getActivity()
                 .getSystemService(Context.LOCATION_SERVICE);
 
-		mMap = new SupportMapFragment().getMap();
-
-        mUseGPS = false;
+		mUseGPS = false;
         if (locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             mUseGPS = true;
         }
-		
-		if (this.mMap != null) {
-			this.mMap.setMyLocationEnabled(true);
-			
-			UiSettings uiSettings = this.mMap.getUiSettings();
-			uiSettings.setZoomControlsEnabled(false);
-			uiSettings.setMyLocationButtonEnabled(true);
-			uiSettings.setCompassEnabled(true);
-		}
 		
 		try {
             if (mUseGPS) {
