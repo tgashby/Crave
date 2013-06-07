@@ -178,7 +178,7 @@ public class USDADatabaseManager {
 		//String ndbno = foodCursor.getString(foodCursor.getColumnIndex("NDB_No"));
 		
 		Cursor nutrCursor = USDADatabaseManager.getNutrInfo(ndbno);
-		Log.d("~~~", ndbno);
+		//Log.d("~~~", ndbno);
 		m_nutFacts.setFoodName(foodStr);
 		
 		double val;
